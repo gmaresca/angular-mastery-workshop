@@ -1,17 +1,19 @@
 <h1>Customers</h1>
 
-<mat-spinner *ngIf="!(customers | async)"></mat-spinner>
+<div class="search">
+  <form [formGroup]="searchForm">
+    <mat-form-field appearance="outline" color="accent">
+      <mat-label>Customer name</mat-label>
+      <input #queryInput matInput type="text" formControlName="query" (keyup.escape)="resetSearchQuery()" cdkFocusInitial>
+      <button mat-button matSuffix mat-icon-button (click)="resetSearchQuery()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </form>
 
-<ng-container *ngIf="customers | async as customersUnwrapped">
+  <mat-spinner *ngIf="loading" diameter="55"></mat-spinner>
+</div>
 
-  <mat-form-field class="example-form-field">
-    <input matInput type="text" placeholder="Name">
-    <button mat-button *ngIf="true" matSuffix mat-icon-button aria-label="Clear" (click)="true">
-      <mat-icon>close</mat-icon>
-    </button>
-  </mat-form-field>
+<my-org-customer-item *ngFor="let customer of customers | async" [customer]="customer">
+</my-org-customer-item>
 
-  <my-org-customer-item *ngFor="let customer of customersUnwrapped" [customer]="customer">
-  </my-org-customer-item>
-
-</ng-container>

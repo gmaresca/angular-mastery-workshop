@@ -23,6 +23,10 @@ export class CustomersBackendService {
       .pipe(shareReplay({ bufferSize: 1, refCount: true }));
   }
 
+  findCustomers(query: string): Observable<Customer[]> {
+    return this.httpClient.get<Customer[]>(`${RESOURCE_URL}?q=${query}`);
+  }
+
   get(id: number): Observable<Customer> {
     return this.httpClient.get<Customer>(`${RESOURCE_URL}/${id}`);
   }

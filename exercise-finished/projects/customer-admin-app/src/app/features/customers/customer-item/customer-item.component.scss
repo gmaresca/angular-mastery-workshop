@@ -4,18 +4,23 @@
 
 mat-card {
   display: flex;
-  align-items: center;
 
-  mat-icon {
-    padding: 5px;
-    border-radius: 50%;
-    background-color: #eeeeee;
-    margin: 0 10px 0 0;
-  }
+  > div {
+    display: flex;
+    align-items: center;
+    width: 40%;
 
-  p {
-    flex: 1 0 auto;
-    margin: 0;
+    mat-icon {
+      padding: 5px;
+      border-radius: 50%;
+      background-color: #eeeeee;
+      margin: 0 10px 0 0;
+    }
+
+    p {
+      flex: 1 0 auto;
+      margin: 0;
+    }
   }
 }
 
