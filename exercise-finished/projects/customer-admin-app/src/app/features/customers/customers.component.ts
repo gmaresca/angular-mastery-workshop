@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+
+import { Customer } from './model/customers';
+import { CustomersBackendService } from './services/customers-backend.service';
 
 @Component({
   selector: 'my-org-customers',
@@ -6,7 +10,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./customers.component.scss'],
 })
 export class CustomersComponent implements OnInit {
-  constructor() {}
+  customers: Observable<Customer[]>;
 
-  ngOnInit() {}
+  constructor(private customersBackendService: CustomersBackendService) {}
+
+  ngOnInit() {
+    this.customers = this.customersBackendService.customers;
+  }
 }

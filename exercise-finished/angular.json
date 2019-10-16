@@ -24,7 +24,6 @@
             "tsConfig": "projects/customer-admin-app/tsconfig.app.json",
             "aot": false,
             "assets": [
-              "projects/customer-admin-app/src/favicon.ico",
               "projects/customer-admin-app/src/assets"
             ],
             "styles": [
@@ -82,11 +81,20 @@
           }
         },
         "test": {
-          "builder": "@nrwl/jest:jest",
+          "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "jestConfig": "projects/customer-admin-app/jest-config.js",
+            "main": "projects/customer-admin-app/src/test.ts",
+            "polyfills": "projects/customer-admin-app/src/polyfills.ts",
             "tsConfig": "projects/customer-admin-app/tsconfig.spec.json",
-            "codeCoverage": true
+            "karmaConfig": "projects/customer-admin-app/karma.conf.js",
+            "assets": [
+              "projects/customer-admin-app/src/favicon.ico",
+              "projects/customer-admin-app/src/assets"
+            ],
+            "styles": [
+              "projects/customer-admin-app/src/styles.scss"
+            ],
+            "scripts": []
           }
         },
         "lint": {
