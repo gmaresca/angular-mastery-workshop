@@ -3,11 +3,11 @@ module.exports = {
   preset: 'jest-preset-angular',
   snapshotSerializers: [
     'jest-preset-angular/AngularSnapshotSerializer.js',
-    'jest-preset-angular/HTMLCommentSerializer.js'
+    'jest-preset-angular/HTMLCommentSerializer.js',
   ],
   setupFilesAfterEnv: ['<rootDir>/jest-setup.ts'],
   transform: {
-    '^.+\\.(ts|html)$': 'ts-jest'
+    '^.+\\.(ts|html)$': 'ts-jest',
   },
   resolver: '@nrwl/jest/plugins/resolver',
   moduleFileExtensions: ['ts', 'js', 'html', 'json'],
@@ -15,5 +15,5 @@ module.exports = {
   coverageReporters: ['text-summary'],
   coveragePathIgnorePatterns: ['/node_modules/'],
   testRegex: ['.*spec.ts$'],
-  testPathIgnorePatterns: ['.*e2e-spec.ts$']
+  testPathIgnorePatterns: ['.*e2e-spec.ts$'],
 };
