@@ -11,7 +11,8 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "format:write": "prettier projects/**/*.{js,ts,json,html,scss,md} --write",
-    "format:test": "prettier projects/**/*.{js,ts,json,html,scss,md} --list-different"
+    "format:test": "prettier projects/**/*.{js,ts,json,html,scss,md} --list-different",
+    "analyze": "ng build --prod --stats-json && webpack-bundle-analyzer ./dist/customer-admin-app/stats-es2015.json"
   },
   "private": true,
   "dependencies": {
@@ -48,10 +49,12 @@
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",
     "karma-spec-reporter": "0.0.32",
+    "npm-run-all": "^4.1.5",
     "prettier": "^1.18.2",
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
-    "typescript": "~3.5.3"
+    "typescript": "~3.5.3",
+    "webpack-bundle-analyzer": "^3.6.0"
   }
 }

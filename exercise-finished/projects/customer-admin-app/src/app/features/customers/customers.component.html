@@ -1,2 +1,17 @@
-<p>customers works!</p>
-{{ customers | async | json }}
+<h1>Customers</h1>
+
+<mat-spinner *ngIf="!(customers | async)"></mat-spinner>
+
+<ng-container *ngIf="customers | async as customersUnwrapped">
+
+  <mat-form-field class="example-form-field">
+    <input matInput type="text" placeholder="Name">
+    <button mat-button *ngIf="true" matSuffix mat-icon-button aria-label="Clear" (click)="true">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+
+  <my-org-customer-item *ngFor="let customer of customersUnwrapped" [customer]="customer">
+  </my-org-customer-item>
+
+</ng-container>

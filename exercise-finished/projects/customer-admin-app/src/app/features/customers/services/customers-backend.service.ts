@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { shareReplay } from 'rxjs/operators';
 
 import { environment } from '../../../../environments/environment';
 
@@ -13,7 +14,17 @@ export class CustomersBackendService {
   customers: Observable<Customer[]>;
 
   constructor(private httpClient: HttpClient) {
-    this.customers = this.httpClient.get<Customer[]>(RESOURCE_URL);
+    this.initializeCustomersStream();
+  }
+
+  initializeCustomersStream() {
+    this.customers = this.httpClient
+      .get<Customer[]>(RESOURCE_URL)
+      .pipe(shareReplay({ bufferSize: 1, refCount: true }));
+  }
+
+  get(id: number): Observable<Customer> {
+    return this.httpClient.get<Customer>(`${RESOURCE_URL}/${id}`);
   }
 
   create(customer: Partial<Customer>): Observable<Customer> {

@@ -3,7 +3,20 @@
     {
       "id": 1,
       "name": "John",
-      "surname": "Snow"
+      "surname": "Snow",
+      "birthday": "1987-01-01T00:00:00.000Z"
+    },
+    {
+      "id": 2,
+      "name": "Tyrion",
+      "surname": "Lanister",
+      "birthday": "1987-01-01T00:00:00.000Z"
+    },
+    {
+      "id": 3,
+      "name": "Sansa",
+      "surname": "Stark",
+      "birthday": "1987-01-01T00:00:00.000Z"
     }
   ]
 }
