@@ -41,4 +41,12 @@ export class CustomersComponent implements OnInit {
   resetSearchQuery() {
     this.searchForm.patchValue({ query: '' });
   }
+
+  refreshCustomers() {
+    this.searchForm.patchValue({ query: this.searchForm.getRawValue().query });
+  }
+
+  removeCustomer(customer: Customer) {
+    this.customersBackendService.remove(customer.id).subscribe(() => this.refreshCustomers());
+  }
 }

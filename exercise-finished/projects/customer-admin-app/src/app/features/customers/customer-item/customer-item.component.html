@@ -17,11 +17,14 @@
     <p myOrgCoin>{{ customer.lifetimeOrderValue | coinFormat }}</p>
   </div>
   <div class="actions">
-    <button mat-icon-button color="primary" [routerLink]="['details', customer.id]">
+    <button mat-icon-button [routerLink]="['details', customer.id]">
       <mat-icon>remove_red_eye</mat-icon>
     </button>
-    <button mat-icon-button color="accent" [routerLink]="['editor', customer.id]">
+    <button mat-icon-button [routerLink]="['editor', customer.id]">
       <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-icon-button color="primary" (click)="confirmRemove()">
+      <mat-icon>clear</mat-icon>
     </button>
   </div>
 </mat-card>

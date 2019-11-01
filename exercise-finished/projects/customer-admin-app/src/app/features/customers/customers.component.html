@@ -21,5 +21,9 @@
   <mat-spinner *ngIf="loading" diameter="55"></mat-spinner>
 </div>
 
-<my-org-customer-item *ngFor="let customer of customers | async" [customer]="customer">
+<my-org-customer-item
+  *ngFor="let customer of customers | async"
+  [customer]="customer"
+  (remove)="removeCustomer($event)"
+>
 </my-org-customer-item>

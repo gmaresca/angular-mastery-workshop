@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import {
   MatToolbarModule,
+  MatDialogModule,
   MatButtonModule,
   MatIconModule,
   MatCardModule,
@@ -15,9 +16,10 @@ import {
 
 import { CoinFormatPipe } from './coin/coin-format.pipe';
 import { CoinDirective } from './coin/coin.directive';
+import { ConfirmDialogComponent } from './dialog/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
-  declarations: [CoinFormatPipe, CoinDirective],
+  declarations: [CoinFormatPipe, CoinDirective, ConfirmDialogComponent],
   imports: [
     // angular
     CommonModule,
@@ -26,6 +28,7 @@ import { CoinDirective } from './coin/coin.directive';
 
     // material
     MatToolbarModule,
+    MatDialogModule,
     MatButtonModule,
     MatIconModule,
     MatCardModule,
@@ -42,6 +45,7 @@ import { CoinDirective } from './coin/coin.directive';
 
     // material
     MatToolbarModule,
+    MatDialogModule,
     MatButtonModule,
     MatIconModule,
     MatCardModule,
@@ -54,5 +58,6 @@ import { CoinDirective } from './coin/coin.directive';
     CoinFormatPipe,
     CoinDirective,
   ],
+  entryComponents: [ConfirmDialogComponent],
 })
 export class SharedModule {}

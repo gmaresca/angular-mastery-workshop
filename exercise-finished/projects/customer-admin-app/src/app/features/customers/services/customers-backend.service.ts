@@ -1,19 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { shareReplay } from 'rxjs/operators';
+import { shareReplay, tap } from 'rxjs/operators';
 
 import { environment } from '../../../../environments/environment';
 
+import { NotificationService } from '../../../core/notification/notification.service';
+
 import { Customer } from '../model/customers';
 
-const RESOURCE_URL = `${environment.API_URL}/customersa`;
+const RESOURCE_URL = `${environment.API_URL}/customers`;
 
 @Injectable()
 export class CustomersBackendService {
   customers: Observable<Customer[]>;
 
-  constructor(private httpClient: HttpClient) {
+  constructor(private httpClient: HttpClient, private notificationService: NotificationService) {
     this.customers = this.httpClient
       .get<Customer[]>(RESOURCE_URL)
       .pipe(shareReplay({ bufferSize: 1, refCount: true }));
@@ -28,14 +30,20 @@ export class CustomersBackendService {
   }
 
   create(customer: Partial<Customer>): Observable<Customer> {
-    return this.httpClient.post<Customer>(RESOURCE_URL, customer);
+    return this.httpClient
+      .post<Customer>(RESOURCE_URL, customer)
+      .pipe(tap(() => this.notificationService.info('Customer created')));
   }
 
   update(customer: Customer): Observable<Customer> {
-    return this.httpClient.put<Customer>(`${RESOURCE_URL}/${customer.id}`, customer);
+    return this.httpClient
+      .put<Customer>(`${RESOURCE_URL}/${customer.id}`, customer)
+      .pipe(tap(() => this.notificationService.info('Customer updated')));
   }
 
   remove(id: number): Observable<void> {
-    return this.httpClient.delete<void>(`${RESOURCE_URL}/${id}`);
+    return this.httpClient
+      .delete<void>(`${RESOURCE_URL}/${id}`)
+      .pipe(tap(() => this.notificationService.warning('Customer removed')));
   }
 }
