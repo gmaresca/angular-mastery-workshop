@@ -3,6 +3,8 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { SharedModule } from '../../../shared/shared.module';
 
+import { NotificationComponent } from '../../notification/notification/notification.component';
+
 import { HeaderComponent } from './header.component';
 
 describe('HeaderComponent', () => {
@@ -12,7 +14,7 @@ describe('HeaderComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule, SharedModule],
-      declarations: [HeaderComponent],
+      declarations: [HeaderComponent, NotificationComponent],
     }).compileComponents();
   }));
 

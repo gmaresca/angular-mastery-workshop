@@ -4,4 +4,5 @@ export interface Customer {
   middleName?: string;
   surname: string;
   birthday?: string;
+  lifetimeOrderValue?: number;
 }

@@ -1,0 +1,6 @@
+<ng-container *ngIf="customer | async as c; else spinner">
+  {{ c.name }}
+</ng-container>
+<ng-template #spinner>
+  <mat-spinner></mat-spinner>
+</ng-template>

@@ -1,33 +1,35 @@
 import { RouterTestingModule } from '@angular/router/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { of } from 'rxjs';
 
 import { SharedModule } from '../../../shared/shared.module';
 
-import { CustomerItemComponent } from './customer-item.component';
-import { Customer } from '../model/customers';
+import { CustomerDetailsComponent } from './customer-details.component';
+import { CustomersBackendService } from '../services/customers-backend.service';
 
-const MOCK_CUSTOMER: Customer = {
-  id: 1,
-  name: 'test',
-  surname: 'tester',
-};
-
-describe('CustomerItemComponent', () => {
-  let component: CustomerItemComponent;
-  let fixture: ComponentFixture<CustomerItemComponent>;
+describe('CustomerDetailsComponent', () => {
+  let component: CustomerDetailsComponent;
+  let fixture: ComponentFixture<CustomerDetailsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [NoopAnimationsModule, RouterTestingModule, SharedModule],
-      declarations: [CustomerItemComponent],
+      providers: [
+        {
+          provide: CustomersBackendService,
+          useValue: {
+            get: () => of({}),
+          },
+        },
+      ],
+      declarations: [CustomerDetailsComponent],
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CustomerItemComponent);
+    fixture = TestBed.createComponent(CustomerDetailsComponent);
     component = fixture.componentInstance;
-    component.customer = MOCK_CUSTOMER;
     fixture.detectChanges();
   });
 

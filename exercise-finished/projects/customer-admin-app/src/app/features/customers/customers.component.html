@@ -2,9 +2,16 @@
 
 <div class="search">
   <form [formGroup]="searchForm">
-    <mat-form-field appearance="outline" color="accent">
+    <mat-form-field appearance="outline" color="accent" floatLabel="always">
       <mat-label>Customer name</mat-label>
-      <input #queryInput matInput type="text" formControlName="query" (keyup.escape)="resetSearchQuery()" cdkFocusInitial>
+      <input
+        #queryInput
+        matInput
+        type="text"
+        formControlName="query"
+        (keyup.escape)="resetSearchQuery()"
+        cdkFocusInitial
+      />
       <button mat-button matSuffix mat-icon-button (click)="resetSearchQuery()">
         <mat-icon>close</mat-icon>
       </button>
@@ -16,4 +23,3 @@
 
 <my-org-customer-item *ngFor="let customer of customers | async" [customer]="customer">
 </my-org-customer-item>
-

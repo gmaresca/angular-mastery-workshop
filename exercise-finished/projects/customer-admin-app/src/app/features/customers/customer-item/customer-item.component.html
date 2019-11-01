@@ -1,10 +1,27 @@
 <mat-card>
   <div>
-    <mat-icon>person</mat-icon>
-    <p>{{customer.name}} {{customer.middleName}} {{customer.surname}}</p>
+    <mat-icon matTooltip="Name" matTooltipPosition="above">person</mat-icon>
+    <p>{{ customer.name }} {{ customer.middleName }} {{ customer.surname }}</p>
   </div>
   <div>
-    <mat-icon>cake</mat-icon>
-    <p>{{customer.birthday | date }}</p>
+    <mat-icon matTooltip="Birthday" matTooltipPosition="above">cake</mat-icon>
+    <p>{{ customer.birthday | date }}</p>
+  </div>
+  <div>
+    <mat-icon
+      [matTooltip]="'Total lifetime order value: ' + (customer.lifetimeOrderValue | coinFormat)"
+      matTooltipPosition="above"
+    >
+      attach_money
+    </mat-icon>
+    <p myOrgCoin>{{ customer.lifetimeOrderValue | coinFormat }}</p>
+  </div>
+  <div class="actions">
+    <button mat-icon-button color="primary" [routerLink]="['details', customer.id]">
+      <mat-icon>remove_red_eye</mat-icon>
+    </button>
+    <button mat-icon-button color="accent" [routerLink]="['editor', customer.id]">
+      <mat-icon>edit</mat-icon>
+    </button>
   </div>
 </mat-card>
