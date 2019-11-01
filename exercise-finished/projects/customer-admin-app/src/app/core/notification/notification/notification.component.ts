@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { NotificationService, Notification } from '../notification.service';
+import { Notification } from '../notification';
+import { NotificationService } from '../notification.service';
 
 @Component({
   selector: 'my-org-notification',
@@ -10,14 +11,16 @@ import { NotificationService, Notification } from '../notification.service';
 })
 export class NotificationComponent implements OnInit {
   notifications: Observable<Notification[]>;
+  notificationsSync: Notification[];
 
   constructor(private notificationService: NotificationService) {}
 
   ngOnInit() {
     this.notifications = this.notificationService.notifications;
+    this.notificationsSync = this.notificationService.notificationsSync;
   }
 
   removeNotification(notification: Notification) {
-    this.notificationService.removeNotification(notification);
+    this.notificationService.remove(notification);
   }
 }
