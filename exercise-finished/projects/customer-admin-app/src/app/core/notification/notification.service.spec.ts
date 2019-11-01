@@ -32,7 +32,11 @@ describe('NotificationService', () => {
     service.info('info message', 200);
 
     expect(service.notificationsSync.length).toBe(1);
-    expect(service.notificationsSync[0]).toEqual({ id: 0, type: 'info', message: 'info message' } as any);
+    expect(service.notificationsSync[0]).toEqual({
+      id: 0,
+      type: 'info',
+      message: 'info message',
+    } as any);
 
     setTimeout(() => {
       expect(service.notificationsSync.length).toBe(0);
