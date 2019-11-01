@@ -26,7 +26,7 @@ export class HttpNotificationInterceptor implements HttpInterceptor {
           }
         },
         error: error => {
-          this.notificationService.info('Backend request failed');
+          this.notificationService.error('Backend request failed');
         },
       }),
     );

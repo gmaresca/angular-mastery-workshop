@@ -7,7 +7,7 @@ import { environment } from '../../../../environments/environment';
 
 import { Customer } from '../model/customers';
 
-const RESOURCE_URL = `${environment.API_URL}/customersa`;
+const RESOURCE_URL = `${environment.API_URL}/customers`;
 
 @Injectable()
 export class CustomersBackendService {
