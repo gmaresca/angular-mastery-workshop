@@ -5,6 +5,10 @@
 mat-card {
   display: flex;
 
+  &.vip {
+    background-color: #fff4ba;
+  }
+
   > div {
     display: flex;
     align-items: center;
