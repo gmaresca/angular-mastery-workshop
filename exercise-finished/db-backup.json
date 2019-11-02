@@ -6,11 +6,13 @@
       "surname": "Snow",
       "birthday": "1995-07-02T00:00:00.000Z",
       "lifetimeOrderValue": 342,
+      "isVip": true,
       "address": {
         "location": "Castle Black",
         "land": "The North",
         "continent": "Westeros"
-      }
+      },
+      "tags": ["bastard", "king in the north"]
     },
     {
       "id": 2,
@@ -18,12 +20,12 @@
       "surname": "Targaryen",
       "birthday": "1996-11-30T00:00:00.000Z",
       "lifetimeOrderValue": 0,
-      "isVip": true,
       "address": {
         "location": "Meereen",
         "land": "Slaver's Bay",
         "continent": "Essos"
-      }
+      },
+      "tags": ["mother of dragons"]
     },
     {
       "id": 3,
@@ -35,7 +37,8 @@
         "location": "Winterfell",
         "land": "The North",
         "continent": "Westeros"
-      }
+      },
+      "tags": []
     },
     {
       "id": 4,
@@ -47,7 +50,8 @@
         "location": "Casterly Rock",
         "land": "The Westerlands",
         "continent": "Westeros"
-      }
+      },
+      "tags": ["the imp"]
     },
     {
       "id": 5,
@@ -59,7 +63,8 @@
         "location": "King's Landing",
         "land": "The Crownlands",
         "continent": "Westeros"
-      }
+      },
+      "tags": ["queen mother"]
     }
   ]
 }

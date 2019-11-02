@@ -1,0 +1,30 @@
+:host {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+mat-form-field {
+  width: 150px;
+  height: 57px;
+  overflow: hidden;
+  margin: 10px 10px 0 0;
+}
+
+button[mat-mini-fab] {
+  margin: 10px 0 0 0;
+}
+
+div {
+  padding: 15px 50px 15px 20px;
+  border-radius: 3px;
+  background-color: #cccccc;
+  margin: 10px 0 0 10px;
+  position: relative;
+
+  button {
+    position: absolute;
+    right: 4px;
+    top: 4px;
+  }
+}

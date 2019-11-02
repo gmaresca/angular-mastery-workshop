@@ -17,9 +17,10 @@ import {
 import { CoinFormatPipe } from './coin/coin-format.pipe';
 import { CoinDirective } from './coin/coin.directive';
 import { ConfirmDialogComponent } from './dialog/confirm-dialog/confirm-dialog.component';
+import { TagListComponent } from './tag-list/tag-list.component';
 
 @NgModule({
-  declarations: [CoinFormatPipe, CoinDirective, ConfirmDialogComponent],
+  declarations: [CoinFormatPipe, CoinDirective, ConfirmDialogComponent, TagListComponent],
   imports: [
     // angular
     CommonModule,
@@ -57,6 +58,7 @@ import { ConfirmDialogComponent } from './dialog/confirm-dialog/confirm-dialog.c
     // local
     CoinFormatPipe,
     CoinDirective,
+    TagListComponent
   ],
   entryComponents: [ConfirmDialogComponent],
 })

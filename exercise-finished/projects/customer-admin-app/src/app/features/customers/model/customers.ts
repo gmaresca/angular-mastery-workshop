@@ -6,4 +6,5 @@ export interface Customer {
   surname: string;
   birthday?: string;
   lifetimeOrderValue?: number;
+  tags?: string[];
 }
