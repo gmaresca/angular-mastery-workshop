@@ -15,9 +15,11 @@ In this exercise were going to explore Angular CLI
 - Test the application (and options)
 - Analyze the application
 - Explore workspace configuration
-- Generate basic application skeleton using schematics
+- Add Prettier support
 - Add Angular Material component framework
-- Add prettier support
+- Generate basic application skeleton using schematics
+
+
 
 ## TODO 1 - Learn how to use Angular CLI
 
@@ -112,3 +114,28 @@ Our workspace setup is prety much done, let's see how it looks like and what can
 1. Open `angular.json` file in the workspace root, it represents the main descriptor and configuration of the whole workspace
 2. Depending on your IDE, try to collapse `projects` property
 3. Our workspace currently has only one project (`customer-admin-app`) and for that reason it was set as the `defaultProject`, single workspace can host multiple apps and libraries and the `defaultProject` tells CLI to run given command agains that project by default, we can still build other project by specifying it using `--project` flag so for example we could use `ng build --prod --project some-other-app`
+4. Inside of `customer-admin-app` you cna find `architect` property with `build` property and finally `configuration` property, here you can see what options are applied by default when using `--prod` flag (it is possible to define your own custom configurations which then can be activated using `--configuration <my-config>` flag when running commands)
+5. Explore the `schematics` property of the `customer-admin-app`, here you can set schematics defaults so let's say if you always wanted to use components with inline templates instead of standalone HTML file you could specify it here instead of always writing `ng generate component some-component --inline-template`
+6. Try to use code completing (of your IDE) inside of schematics configuration and you should get hints about all the available options
+
+## TODO 9 - Add prettier support
+
+Prettier is amazing frontend tooling package which enables autoformatting of your source code leting you focus on developing features instead!
+
+1. Install `prettier` as a dev dependency `npm i -D`
+2. Create `.prettierrc` file in the workspace root and add the following content
+
+```json
+{
+  "singleQuote": true,
+  "printWidth": 100
+}
+```
+
+3. Try to go to any source file in the `customer-admin-app`, (eg `app.component.ts`) and break formatting, then depending on IDE try to run prettier
+    * Intellij IDEA - press `CTRL ALT SHIFT P` (check your plugins if it doesnt work...)
+    * VS Code - install prettier extension and then it should be available with `SHIFT ALT F`
+    
+4. Add `format:write`  script to your `package.json` file with `prettier \"projects/**/*.{ts,scss,json,html,js}\" --write` content
+5. Add `format:test`  script to your `package.json` file with `prettier \"projects/**/*.{ts,scss,json,html,js}\" --list-different` content
+6. Try running the `format:test` followed by the `format:write` and again followed by `format:test`, all the errors should be gone!
