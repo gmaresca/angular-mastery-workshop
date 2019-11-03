@@ -1,4 +1,3 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @import '~@angular/material/theming';
@@ -12,21 +11,43 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$customer-admin-app-primary: mat-palette($mat-indigo);
-$customer-admin-app-accent: mat-palette($mat-pink, A200, A100, A400);
+$customer-admin-app-primary: mat-palette($mat-red, 600, 400, 900);
+$customer-admin-app-accent: mat-palette($mat-blue, 600, 400, 800);
 
 // The warn palette is optional (defaults to red).
-$customer-admin-app-warn: mat-palette($mat-red);
+$customer-admin-app-warn: mat-palette($mat-orange);
 
 // Create the theme object (a Sass map containing all of the palettes).
-$customer-admin-app-theme: mat-light-theme($customer-admin-app-primary, $customer-admin-app-accent, $customer-admin-app-warn);
+$customer-admin-app-theme: mat-light-theme(
+    $customer-admin-app-primary,
+    $customer-admin-app-accent,
+    $customer-admin-app-warn
+);
+
+// Custom theme imports
+//@import './app/core/layout/header/header.component.scss-theme';
+//@import './app/core/layout/footer/footer.component.scss-theme';
+
+@mixin custom-components-theme($theme) {
+  // Include custom components themes
+  //@include my-org-header-component-theme($theme);
+  //@include my-org-footer-component-theme($theme);
+}
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include angular-material-theme($customer-admin-app-theme);
+@include custom-components-theme($customer-admin-app-theme);
 
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  background-color: #eeeeee;
+}
