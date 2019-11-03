@@ -16,10 +16,9 @@ In this exercise were going to explore Angular CLI
 - Analyze the application
 - Explore workspace configuration
 - Add Prettier support
+- Remove default placeholder content
 - Add Angular Material component framework
 - Generate basic application skeleton using schematics
-
-
 
 ## TODO 1 - Learn how to use Angular CLI
 
@@ -118,7 +117,7 @@ Our workspace setup is prety much done, let's see how it looks like and what can
 5. Explore the `schematics` property of the `customer-admin-app`, here you can set schematics defaults so let's say if you always wanted to use components with inline templates instead of standalone HTML file you could specify it here instead of always writing `ng generate component some-component --inline-template`
 6. Try to use code completing (of your IDE) inside of schematics configuration and you should get hints about all the available options
 
-## TODO 9 - Add prettier support
+## TODO 9 - Add Prettier support
 
 Prettier is amazing frontend tooling package which enables autoformatting of your source code leting you focus on developing features instead!
 
@@ -133,9 +132,46 @@ Prettier is amazing frontend tooling package which enables autoformatting of you
 ```
 
 3. Try to go to any source file in the `customer-admin-app`, (eg `app.component.ts`) and break formatting, then depending on IDE try to run prettier
-    * Intellij IDEA - press `CTRL ALT SHIFT P` (check your plugins if it doesnt work...)
-    * VS Code - install prettier extension and then it should be available with `SHIFT ALT F`
-    
-4. Add `format:write`  script to your `package.json` file with `prettier \"projects/**/*.{ts,scss,json,html,js}\" --write` content
-5. Add `format:test`  script to your `package.json` file with `prettier \"projects/**/*.{ts,scss,json,html,js}\" --list-different` content
+
+   - Intellij IDEA - press `CTRL ALT SHIFT P` (check your plugins if it doesnt work...)
+   - VS Code - install prettier extension and then it should be available with `SHIFT ALT F`
+
+4. Add `format:write` script to your `package.json` file with `prettier \"projects/**/*.{ts,scss,json,html,js}\" --write` content
+5. Add `format:test` script to your `package.json` file with `prettier \"projects/**/*.{ts,scss,json,html,js}\" --list-different` content
 6. Try running the `format:test` followed by the `format:write` and again followed by `format:test`, all the errors should be gone!
+7. It is also a good idea to disable potentially conflicting `tslint` rule and let prettier handle the formating, to do that we should set both `"max-line-length"` and `"quotemark""` rules in `tslint.json` (in the workspace root) to false
+
+## TODO 10 - Remove default placeholder content
+As we might have noticed, running freshly generated application comes with some default content which
+gives us some pointers abou the next steps. That being said we need to get rid of it to start developing our own features.
+
+1. Open the `app.component.html` file a delete all its content.
+2. Add `<h1>{{title}} app is running!</h1>` instead
+3. Open the `app.component.spec.ts` file and change `compiled.querySelector('.content span')` to `compiled.querySelector('h1')`
+4. Try to run tests using `npm test`
+
+
+## TODO 11 - Add Angular Material component framework
+
+Angular Material is a "official" component framework developed by the Angular team and open source colaborators, as such 
+it represents a great starting point for developing beautiful Angular applications ( other options being nothing, other 3rd party component frameworks or your own custom framework, but that takes LOTS of time, skill and dedication...)
+
+Setting up Angular material is not trivial and includes couple of steps and choices to be made on the way...
+
+Luckily, Angular CLI and Angular Schematics support automating of such proceses using `ng add` command!
+
+1. Run `ng add --help` to see available options, the `collection` stands for the package to be added and in our case that will be `@angular/materail`
+2. Run `ng add @angular/material`, the package will be installed and the Angular Schematics will prompt us for some required options that we didn't provide with the commnad
+3. Choose `Custom` theme
+4. Confirm setup of HammerJS
+5. Add browser animations
+6. Once done, the command line will inform us about what changes have been made by running the `ng add` schematics, let's explore these files...
+    * `main.ts` - the `hammerjs` import was added
+    * `app.module.ts` - the `BrowserANimationModule` was added
+    * `index.html` - links to fonts used by Angular Material were added, try to add `mat-typography` class on the `<body>` tag
+    * `styles.scss` - large custom theme setup was added automatically including hints how to adjust it further!
+    
+7. All this setup executed seamlessly with the power of Angular Schematics, pretty epic! Remember, many popular 3rd party libraries come with the `ng add` support simplifying the setup and usage dramatically!
+8. Run application using `npm start` to see how `mat-typography` affected the fonts
+
+## TODO 12 - Generate basic application skeleton using schematics
