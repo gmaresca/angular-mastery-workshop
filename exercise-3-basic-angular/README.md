@@ -17,6 +17,17 @@ Make sure your application is running by executing `npm start`
 
 ## TODO 1: Create CustomerItemComponent
 1. Use `ng g c features/customers/customer-item` to generate new component, it will automatically be added to the `declarations: [ ]` of `CustomersModule`...
+2. In the `customers.component.html` render `<my-org-customer-item></my-org-customer-item>` for every value in `customers` array (hint use `*ngFor` directive)
+3. In the `customer-item.component.ts` define `@Input()` which accepts the customer object from the parent into `customer` property and also uses `Customer` interface
+4. In the `customers.component.html` pass the `customer` object (from `*ngFor` iteration) down to the `<my-org-customer-item></my-org-customer-item>` using `[customer]` property binding
+5. In the `customer-item.component.ts` try to log out value `@Input() customer` property in the constructor and in the `ngOnInit()` lifecycle hook (don't forget) to implement the interface and! And check out console in your browser Dev Tools... (hint `console.log('constructor', this.customer);`) 
+6. In the `customer-item.component.html` add `<mat-card></mat-card>` as a top level element and render customer name and surname into `<p>` tag inside the card with the help of interpolation `{{ }}` 
+7. In the `customer-item.component.scss` add css rule for `mat-card` setting its `display` to `flex` and another rule for `p` setting its `margin` to `0`
+8. In the `customer-item.component.html` add `<mat-icon>person</mat-card>` before the `<p>` tag
+9. In the `customer-item.component.html` add `[ngClass]` directive on the `<mat-card>` element which should set `vip` class based on the value of `customer.isVip` property
+10. In the `customer-item.component.scss` add nested css rule inside of `mat-card` using which will define rule for `.vip` class (nested rules that belong to element are prefixed with `&`, so `&.vip`) and add rule that sets `background-color` to `#fff4ba`
+11. In the `customer-item.component.html` add `<mat-icon>star</mat-icon>` but display it conditionally only for the VIP customers (hint:  use `*ngIf` directive)
+12. Also, we do not want to display two icons at the same time so hide the original `person` icon in case the customer is VIP 
 
 
 ## How to start
