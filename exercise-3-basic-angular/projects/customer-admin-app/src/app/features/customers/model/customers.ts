@@ -7,4 +7,5 @@ export interface Customer {
   birthday?: string;
   lifetimeOrderValue?: number;
   tags?: string[];
+  orders?: number [];
 }

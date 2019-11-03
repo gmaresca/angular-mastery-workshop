@@ -9,7 +9,7 @@ In this exercise were going to explore creation of components & services
 - Create component
 - Render data
 - Use various built in directives
-- Create more components and implement inter component communication 
+- Implement inter component communication 
 - Create and use service
 
 ## TODO 0: Start application
@@ -27,7 +27,10 @@ Make sure your application is running by executing `npm start`
 9. In the `customer-item.component.html` add `[ngClass]` directive on the `<mat-card>` element which should set `vip` class based on the value of `customer.isVip` property
 10. In the `customer-item.component.scss` add nested css rule inside of `mat-card` using which will define rule for `.vip` class (nested rules that belong to element are prefixed with `&`, so `&.vip`) and add rule that sets `background-color` to `#fff4ba`
 11. In the `customer-item.component.html` add `<mat-icon>star</mat-icon>` but display it conditionally only for the VIP customers (hint:  use `*ngIf` directive)
-12. Also, we do not want to display two icons at the same time so hide the original `person` icon in case the customer is VIP 
+12. Also, we do not want to display two icons at the same time so hide the original `person` icon in case the customer is VIP
+13. In the `customer-item.component.html` add `<button>` with `mat-raised-button` directive and `Say hello` text content, after that add `(click)` event binding which will call `sayHello()` method and pass in the `customer` object as an argument
+14. In the `customer-item.component.ts` implement public `sayHello()` method which accepts `customer` of type `Customer` as an argument and logs out customer full name when called (hint: try use javascript template string, to concatenate name and the surname)
+
 
 
 ## How to start
