@@ -1,0 +1,70 @@
+{
+  "customers": [
+    {
+      "id": 1,
+      "name": "John",
+      "surname": "Snow",
+      "birthday": "1995-07-02T00:00:00.000Z",
+      "lifetimeOrderValue": 342,
+      "isVip": true,
+      "address": {
+        "location": "Castle Black",
+        "land": "The North",
+        "continent": "Westeros"
+      },
+      "tags": ["bastard", "king in the north"]
+    },
+    {
+      "id": 2,
+      "name": "Daenerys",
+      "surname": "Targaryen",
+      "birthday": "1996-11-30T00:00:00.000Z",
+      "lifetimeOrderValue": 0,
+      "address": {
+        "location": "Meereen",
+        "land": "Slaver's Bay",
+        "continent": "Essos"
+      },
+      "tags": ["mother of dragons"]
+    },
+    {
+      "id": 3,
+      "name": "Sansa",
+      "surname": "Stark",
+      "birthday": "1999-05-07T00:00:00.000Z",
+      "lifetimeOrderValue": 15247,
+      "address": {
+        "location": "Winterfell",
+        "land": "The North",
+        "continent": "Westeros"
+      },
+      "tags": []
+    },
+    {
+      "id": 4,
+      "name": "Tyrion",
+      "surname": "Lannister",
+      "birthday": "1980-09-02T00:00:00.000Z",
+      "lifetimeOrderValue": 627913,
+      "address": {
+        "location": "Casterly Rock",
+        "land": "The Westerlands",
+        "continent": "Westeros"
+      },
+      "tags": ["the imp"]
+    },
+    {
+      "id": 5,
+      "name": "Cersei",
+      "surname": "Lannister",
+      "birthday": "1976-03-18T00:00:00.000Z",
+      "lifetimeOrderValue": 1300124,
+      "address": {
+        "location": "King's Landing",
+        "land": "The Crownlands",
+        "continent": "Westeros"
+      },
+      "tags": ["queen mother"]
+    }
+  ]
+}

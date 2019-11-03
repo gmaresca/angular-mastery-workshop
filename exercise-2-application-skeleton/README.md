@@ -76,3 +76,4 @@ Try to use `http://localhost:4200/` url in your brwoser and see what happens!
 - every exercise can start tests in watch mode using `npm run watch`
 - every exercise has it's own `README.md` file with additional description of the given exercise
 - every exercise project contains ordered `TODO ` in the readme and `// TODO` comments inside of the source code (eg `// TODO 2: description`) which should be followed to complete the given exercise
+- you can always search for `// TODO`, or `<!-- TODO` or check `README.md` for the next TODO item
