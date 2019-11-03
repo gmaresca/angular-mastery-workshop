@@ -9,8 +9,11 @@ In this exercise were going to explore how to scaffold application skeleton usin
 - Create CoreModule
 - Create SharedModule
 - Create base layout
-- Create lazy loaded HomeModule
-- Create lazy loaded CustomersModule
+- Prepare routing
+- Create lazy loaded HomeModule and CustomersModule
+
+## Todo 0: Start application
+Make sure your application is running by executing `npm start`
 
 ## TODO 1: Create CoreModule
 We're going to use Angular Schematics to help us scaffold base application structure
@@ -32,9 +35,33 @@ Now lets create some basic layout with header (and navigation), footer and cente
 3. Use Use `ng g c core/layout/footer` to generate new footer component, it will automatically be added to the `declarations: [ ]` of `CoreModule` and add it to the `exports: [ ]` too!
 4. Add `<my-org-footer></my-org-footer>` as the last component in the `app.component.html` template 
 5. Replace <h1> in the `app.component.html` template with the `<div class="content"></div>` (it will use some prepared styles you can find in `app.component.scss`)
-6. Import `MatToolbarModule` and `MatButtonModule` from `@angular/material` inside of `shared.module.ts` and add the mto both `imports: [ ]` and `exports: [ ]` arrays...
+6. Import `MatToolbarModule` and `MatButtonModule` from `@angular/material` inside of `shared.module.ts` and add them to both `imports: [ ]` and `exports: [ ]` arrays...
 7. Add `<mat-toolbar [color]="primary">Customer Admin</mat-toolbar>` in the `header.component.html` (remove original content`<p>` tag) 
 
+## Todo 4: Prepare routing
+
+1. Inside of `SharedModule` import the`RouterModule` and add it to both `imports: [ ]` and `exports: [ ]` arrays, this will enable us to use routing related components and directives...
+2. In the `app.component.html` add `<router-outlet></router-outlet>` as a child of the `<div class="content"></div>`, this will be the location where we want to display our routes...
+3. In the `header.component.html` add `<button mat-raised-button routerLink="home">Home</button>` as a child of `<mat-toolbar>`
+4. In the `header.component.html` add `<button mat-raised-button routerLink="customers">Customers</button>` as a second child of `<mat-toolbar>`
+5. (Optional) Add `button { margin: 0 0 0 20px; }` to the `header.component.scss` (our css rule does NOT have to be specific because Angular scopes styles per component)
+
+## Todo 5: Create lazy loaded HomeModule and CustomersModule
+1. Run `ng g m features/home --route home --module app.module.ts` which is a schematics that we used previously to generated `Core` and `Shared` modules but now we use it with additional options `--route` and `--module` which will cause it to be generated as a lazy loaded module belonging to the root `AppModule` (its routing)
+2. Run `ng g m features/customers --route customers --module app.module.ts` will generate lazy loaded `CustomersModule`...
+3. Navigate to routes using menu in the toolbar (if this does NOT work try restarting your application using `npm start`, CLI sometimes doesn't catch all the generated files while running...)
+4. As you might have noticed, we're not displaying any route when navigating to plain root url `http://localhost:4200/`, lets fix that by adding redirect as a first route in `app-routing.module.ts` in the `routes: [ ]` array
+
+```javascript
+{
+  path: '',
+  pathMatch: 'full',
+  redirectTo: 'home'
+}
+
+```
+
+Try to use `http://localhost:4200/` url in your brwoser and see what happens!
 
 ## How to start
 
