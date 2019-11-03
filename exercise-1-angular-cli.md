@@ -18,7 +18,6 @@ In this exercise were going to explore Angular CLI
 - Add Prettier support
 - Remove default placeholder content
 - Add Angular Material component framework
-- Generate basic application skeleton using schematics
 
 ## TODO 1 - Learn how to use Angular CLI
 
@@ -81,6 +80,12 @@ In this exercise were going to explore Angular CLI
 9. Check out the new test output
 10. Try breaking a test by changing `toEqual('customer-admin-app');` in the `app.component.spec.ts` file (`/projects/customer-admin-app/src/app/`) to `customer-admin-app 1`
 11. Check out the new test output and try changing tests couple of times
+12. Run end to end tests using `ng e2e`
+13. Run tslint using `ng lint`
+
+### Continuous Integration testing
+It usually makes sense to create dedicated `ci` npm script in package json which will execute all the tests in order for every
+push to give branch, such a command can look like `"ci": "ng lint && ng test && ng e2e"`...
 
 ## TODO 7 - Analyze application
 
@@ -174,4 +179,5 @@ Luckily, Angular CLI and Angular Schematics support automating of such proceses 
 7. All this setup executed seamlessly with the power of Angular Schematics, pretty epic! Remember, many popular 3rd party libraries come with the `ng add` support simplifying the setup and usage dramatically!
 8. Run application using `npm start` to see how `mat-typography` affected the fonts
 
-## TODO 12 - Generate basic application skeleton using schematics
+
+# Great! We have set up nice Angular workspace and are ready for the development!
