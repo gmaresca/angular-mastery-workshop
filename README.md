@@ -18,10 +18,10 @@ You can always compare your solution with the `exercise-finished` project which 
 working solution for every previous exercise
 
 
-## How to use Jest in "watch" mode
+## How to use test in "watch" mode
 
-- `a` - to run all tests
-- `w` followed by `p` - to run only specific files (regexp, eg `todo.comp` will run `todo.component.spec.ts` file)
+- run `npm run watch` which will start tests in watch mode so they will re-run any time you make changes to your code
+- use `fdescribe` or `fit` to run just one test suite (or one test)
 
 
 ## API (backend) requests
