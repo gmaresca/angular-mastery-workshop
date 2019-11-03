@@ -6,48 +6,109 @@ by [@tomastrajan](https://twitter.com/tomastrajan)
 
 In this exercise were going to explore Angular CLI
 
-* Learn how to execute Angular CLI commands and how to get and use`--help` for given command
-* Create new Angular workspace 
-* Learn how to use Angular schematics
-* Create application in the workspace
-* Run the application (and options)
-* Build the application (and options)
-* Test the application (and options)
-* Analyze the application 
-* Explore workspace configuration
-* Generate basic application skeleton using schematics
-* Add Angular Material component framework
-* Add prettier support
-
+- Learn how to execute Angular CLI commands and how to get and use`--help` for given command
+- Create new Angular workspace
+- Learn how to use Angular schematics
+- Create application in the workspace
+- Run the application (and options)
+- Build the application (and options)
+- Test the application (and options)
+- Analyze the application
+- Explore workspace configuration
+- Generate basic application skeleton using schematics
+- Add Angular Material component framework
+- Add prettier support
 
 ## TODO 1 - Learn how to use Angular CLI
+
 1. Run `ng` command to see all the available Angular CLI commands
 2. Try running `ng <some-command> --hep`
 
-## TODO 2 - Create new Angular workspace 
+## TODO 2 - Create new Angular workspace
+
 1. Workspaces are created using `ng new` command but before we execute it explore available options
 2. Run `ng new exercise-1-angular-cli` command with options that disables creation of initial application, sets style to `scss` , enables `routing` and sets `prefix` to `my-org`
 3. Once done explore what was generated inside your IDE and enter the workspace folder in your console (eg `cd exercise-1-angular-cli`)
 
 ## TODO 3 - Learn how to use Angular schematics
+
 1. Once in an Angular workspace we can start using Angular schematics to scaffold code instead of writing it manually
 2. Schematics are executed using`ng generate` (or `ng g`), running this command will give us list of all available schematics
 3. Similarly to Angular CLI we can explore schematics option using `ng g <scheamtic-name> --help`
 
 ## TODO 4 - Create application in the workspace
+
 1. Application in a workspace can be generated using Angular schematics
 2. Explore options of `application` schematics using `--help` flag
 3. Create an application with name `customer-admin-app` and following options: enabled `routing`, `scss` style and `my-org` prefix
 4. Once done explore what was generated inside your IDE
 
 ## TODO 5 - Run the application
-1. Once we created our application we can run it in two ways, first being `ng serve` (and second being `npm start`, check that command in the `package.json` file)
+
+1. Once we created our application we can run it in two ways, first being `ng serve` (and second being `npm start`, check that script in the `package.json` file)
 2. Open browser at `http://localhost:4200` to see the application running
-3. Adjust the `start` command in the `package.json` file by adding `--open` flag, stop running app and restart it using `npm start`
+3. Adjust the `start` script in the `package.json` file by adding `--open` flag, stop running app and restart it using `npm start`
 4. Once running open your browsers DEV tools and explore the network tab about what kind of files represent the application and check their size
-5. Add new `start:prod` command to your `package.json` file and add both `--open` and `--prod` flags, stop running app and restart it using `npm start:prod`
-4. Once running open your browsers DEV tools and explore the network tab about what kind of files represent the application and check their size
-6. What other difference besides the size of the files was between the DEV and the PROD mode and what is its purpose?
+5. Add new `start:prod` script to your `package.json` file and add both `--open` and `--prod` flags, stop running app and restart it using `npm start:prod`
+6. Once running open your browsers DEV tools and explore the network tab about what kind of files represent the application and check their size
+7. What other difference besides the size of the files was between the DEV and the PROD mode and what is its purpose?
 
 ## TODO 5 - Build the application
 
+1. Serving application is great for the development purposes but we have to build artifacts to deploy to production
+2. Build application using `ng build` (or `npm run build`, notice the `run` keyword, every script besides `start` and `test` ha to use `run`)
+3. Once done explore the `dist` folder
+4. Add new `build:prod` script to your `package.json` file and add `--prod` flags, and build your application again using `npm build:prod`
+5. Once done explore the `dist` folder
+6. What other difference besides the size of the files was between the DEV and the PROD mode and what is its purpose?
+7. Explore options of `ng build` script using `--help` flag
+8. Open `brwoserlist` file (`projects/customer-admin-app/`) and change `> 0.5%` to `> 5%`, remove `last 2 versions` and `Firefox ESR`
+9. Build your application again using `npm build:prod`
+10. What files have been generated compared to previously and why?
+11. Explore [browserlist](https://browserl.ist/?q=%3E+0.5%25%2C+last+2+versions%2C+Firefox+ESR%2C+not+dead%2C+not+IE+9-11) for your query
+
+## TODO 6 - Test the application
+
+1. Run `ng test` (or `npm test`)
+2. Explore the new opened browser window
+3. Stop the test script and open `karma.conf.js` file (`projects/customer-admin-app/`)
+4. Change `browsers: ['Chrome'],` to `browsers: ['ChromeHeadless'],` and set `singleRun` to `true`
+5. That way we get single test run scenario which is great for continous integration
+6. Add `watch` script to your `package.json` file which will execute `ng test` with`--watch` flag and run it
+7. Install `karma-spec-reporter` package using `npm i -D` (install dev dependency) and add it to the plugins in `karma.conf.js` file
+8. Adjust your `watch` script in `package.json` by adding `--reporters spec` flag and run it
+9. Check out the new test output
+10. Try breaking a test by changing `toEqual('customer-admin-app');` in the `app.component.spec.ts` file (`/projects/customer-admin-app/src/app/`) to `customer-admin-app 1`
+11. Check out the new test output and try changing tests couple of times
+
+## TODO 7 - Analyze application
+
+Analyzing application can come in handy when debugging produced bundle size...
+
+1. Install `webpack-bundle-analyzer` as a dev dependency (`npm i -D`)
+2. Add `analyze` script to your `package.json` file which will run `ng build` with `--prod` and `--stats-json` flags
+3. Extend the command with `&& webpack-bundle-analyze ./dist/customer-admin-app/stats-es2015.json`
+4. Run the analyze command and explore the website in opened tab (try checking "Show content of concatenated modules" checkbox)
+
+### Troubleshooting
+
+On windows machines without GitBash, WSL or cygwin it might NOT be possible to use `&&` to chain commands in the npm scripts
+In that case we have to install `npm i -D npm-run-all` package and change our `analyze` script to look like this...
+
+```json
+{
+  "scripts": {
+    "analyze": "npm-run-all analyze:*",
+    "analyze:stats": "ng build --prod --stats-json",
+    "analyze:open": "webpack-bundle-analyzer ./dist/customer-admin-app/stats-es2015.json"
+  }
+}
+```
+
+## TODO 8 - Explore workspace configuration
+
+Our workspace setup is prety much done, let's see how it looks like and what can be configured...
+
+1. Open `angular.json` file in the workspace root, it represents the main descriptor and configuration of the whole workspace
+2. Depending on your IDE, try to collapse `projects` property
+3. Our workspace currently has only one project (`customer-admin-app`) and for that reason it was set as the `defaultProject`, single workspace can host multiple apps and libraries and the `defaultProject` tells CLI to run given command agains that project by default, we can still build other project by specifying it using `--project` flag so for example we could use `ng build --prod --project some-other-app`
