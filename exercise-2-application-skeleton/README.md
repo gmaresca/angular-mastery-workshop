@@ -12,7 +12,7 @@ In this exercise were going to explore how to scaffold application skeleton usin
 - Prepare routing
 - Create lazy loaded HomeModule and CustomersModule
 
-## Todo 0: Start application
+## TODO 0: Start application
 Make sure your application is running by executing `npm start`
 
 ## TODO 1: Create CoreModule
@@ -34,7 +34,7 @@ Now lets create some basic layout with header (and navigation), footer and cente
 2. Add `<my-org-header></my-org-header>` as the first component in the `app.component.html` template
 3. Use Use `ng g c core/layout/footer` to generate new footer component, it will automatically be added to the `declarations: [ ]` of `CoreModule` and add it to the `exports: [ ]` too!
 4. Add `<my-org-footer></my-org-footer>` as the last component in the `app.component.html` template 
-5. Replace <h1> in the `app.component.html` template with the `<div class="content"></div>` (it will use some prepared styles you can find in `app.component.scss`)
+5. Replace `<h1>` in the `app.component.html` template with the `<div class="content"></div>` (it will use some prepared styles you can find in `app.component.scss`)
 6. Import `MatToolbarModule` and `MatButtonModule` from `@angular/material` inside of `shared.module.ts` and add them to both `imports: [ ]` and `exports: [ ]` arrays...
 7. Add `<mat-toolbar [color]="primary">Customer Admin</mat-toolbar>` in the `header.component.html` (remove original content`<p>` tag) 
 
@@ -62,6 +62,8 @@ Now lets create some basic layout with header (and navigation), footer and cente
 ```
 
 Try to use `http://localhost:4200/` url in your brwoser and see what happens!
+
+# Great! We have nice application skeleton, layout and routing with lazy loading, that's a great starting point to start developing features!
 
 ## How to start
 
