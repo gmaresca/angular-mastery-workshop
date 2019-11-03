@@ -119,8 +119,9 @@ Our workspace setup is prety much done, let's see how it looks like and what can
 2. Depending on your IDE, try to collapse `projects` property
 3. Our workspace currently has only one project (`customer-admin-app`) and for that reason it was set as the `defaultProject`, single workspace can host multiple apps and libraries and the `defaultProject` tells CLI to run given command agains that project by default, we can still build other project by specifying it using `--project` flag so for example we could use `ng build --prod --project some-other-app`
 4. Inside of `customer-admin-app` you cna find `architect` property with `build` property and finally `configuration` property, here you can see what options are applied by default when using `--prod` flag (it is possible to define your own custom configurations which then can be activated using `--configuration <my-config>` flag when running commands)
-5. Explore the `schematics` property of the `customer-admin-app`, here you can set schematics defaults so let's say if you always wanted to use components with inline templates instead of standalone HTML file you could specify it here instead of always writing `ng generate component some-component --inline-template`
-6. Try to use code completing (of your IDE) inside of schematics configuration and you should get hints about all the available options
+5. Find `budgets` in the `build` configuration, this feature enables your build to fail if the size of the bundle crosses specified threshold, try to set it lower and run `npm run build:prod` to see it fail...
+6. Explore the `schematics` property of the `customer-admin-app`, here you can set schematics defaults so let's say if you always wanted to use components with inline templates instead of standalone HTML file you could specify it here instead of always writing `ng generate component some-component --inline-template`
+7. Try to use code completing (of your IDE) inside of schematics configuration and you should get hints about all the available options
 
 ## TODO 9 - Add Prettier support
 
