@@ -9,7 +9,7 @@ import { NotificationService } from '../../../core/notification/notification.ser
 
 import { Customer } from '../model/customers';
 
-const RESOURCE_URL = `${environment.API_URL}/customers`;
+export const RESOURCE_URL = `${environment.API_URL}/customers`;
 
 @Injectable()
 export class CustomersBackendService {

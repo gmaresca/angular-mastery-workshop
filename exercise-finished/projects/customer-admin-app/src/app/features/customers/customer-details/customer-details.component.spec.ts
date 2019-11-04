@@ -19,7 +19,7 @@ describe('CustomerDetailsComponent', () => {
         {
           provide: CustomersBackendService,
           useValue: {
-            get: () => of({}),
+            get: () => of({ name: 'test', address: {} }),
           },
         },
       ],
