@@ -1,0 +1,12 @@
+<!-- TODO 20: replace "notificationsSync" with "notifications" and add "| async" pipe to subscribe to the reactive notification stream -->
+<mat-card *ngFor="let notification of notificationsSync" [ngClass]="notification.type">
+  <mat-icon>{{ notification.type }}</mat-icon>
+  <p>{{ notification.message }}</p>
+  <button
+    mat-icon-button
+    *ngIf="notification.type === 'error'"
+    (click)="removeNotification(notification)"
+  >
+    <mat-icon>clear</mat-icon>
+  </button>
+</mat-card>
