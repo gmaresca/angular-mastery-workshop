@@ -1,0 +1,41 @@
+:host {
+  position: absolute;
+  right: 10px;
+  top: 70px;
+  width: 400px;
+  z-index: 10000;
+}
+
+mat-card {
+  display: flex;
+  align-items: center;
+  margin: 0 0 10px 0;
+
+  p {
+    flex: 1 0 auto;
+    font-size: 14px !important;
+    margin: 0 !important;
+  }
+
+  mat-icon {
+    margin: 0 10px 0 0;
+  }
+
+  &.info {
+    mat-icon {
+      color: #429cff;
+    }
+  }
+
+  &.warning {
+    mat-icon {
+      color: #ffae45;
+    }
+  }
+
+  &.error {
+    mat-icon {
+      color: #b80025;
+    }
+  }
+}

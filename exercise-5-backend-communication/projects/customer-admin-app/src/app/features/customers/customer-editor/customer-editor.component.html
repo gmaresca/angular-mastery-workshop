@@ -1,0 +1,46 @@
+<ng-container *ngIf="customer | async as c; else spinner">
+  <h1>
+    {{ c.name }} {{ c.surname }} <mat-icon *ngIf="c.isVip">star</mat-icon>
+    <button
+      mat-icon-button
+      routerLink="../../../customers"
+      matTooltip="Close customer details"
+      matTooltipPosition="above"
+    >
+      <mat-icon>clear</mat-icon>
+    </button>
+  </h1>
+
+  <mat-card>
+    <form [formGroup]="customerForm">
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Name" formControlName="name" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Surname</mat-label>
+          <input matInput placeholder="Surname" formControlName="surname" />
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Birthday</mat-label>
+          <input matInput [matDatepicker]="picker" placeholder="Birthday" formControlName="birthday">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+    </form>
+
+    <div class="actions">
+
+      <button mat-raised-button (click)="submit(c)" color="accent">Submit</button>
+      <button mat-flat-button (click)="reset(c)">Reset</button>
+    </div>
+  </mat-card>
+</ng-container>
+<ng-template #spinner>
+  <mat-spinner diameter="55"></mat-spinner>
+</ng-template>
