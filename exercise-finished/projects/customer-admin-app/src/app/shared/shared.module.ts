@@ -9,8 +9,11 @@ import {
   MatIconModule,
   MatCardModule,
   MatInputModule,
+  MatSelectModule,
   MatTooltipModule,
   MatFormFieldModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
   MatProgressSpinnerModule,
 } from '@angular/material';
 
@@ -34,8 +37,11 @@ import { TagListComponent } from './tag-list/tag-list.component';
     MatIconModule,
     MatCardModule,
     MatInputModule,
+    MatSelectModule,
     MatTooltipModule,
     MatFormFieldModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     MatProgressSpinnerModule,
   ],
   exports: [
@@ -51,8 +57,10 @@ import { TagListComponent } from './tag-list/tag-list.component';
     MatIconModule,
     MatCardModule,
     MatInputModule,
+    MatSelectModule,
     MatTooltipModule,
     MatFormFieldModule,
+    MatDatepickerModule,
     MatProgressSpinnerModule,
 
     // local
