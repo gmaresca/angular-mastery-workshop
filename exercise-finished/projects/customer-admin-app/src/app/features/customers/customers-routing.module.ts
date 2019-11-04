@@ -8,7 +8,7 @@ import { CustomerDetailsComponent } from './customer-details/customer-details.co
 const routes: Routes = [
   { path: '', component: CustomersComponent },
   { path: 'details/:id', component: CustomerDetailsComponent },
-  { path: 'editor', component: CustomerEditorComponent },
+  { path: 'editor/:id', component: CustomerEditorComponent },
 ];
 
 @NgModule({

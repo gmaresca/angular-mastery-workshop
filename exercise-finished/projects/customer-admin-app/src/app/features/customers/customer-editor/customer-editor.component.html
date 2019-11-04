@@ -1,1 +1,11 @@
-<p>customer-editor works!</p>
+<ng-container *ngIf="customer | async as c; else spinner">
+  <h1>
+    {{ c.name }} {{c.surname}}
+    <button mat-icon-button routerLink="../../../customers" matTooltip="Close customer details" matTooltipPosition="above">
+      <mat-icon>clear</mat-icon>
+    </button>
+  </h1>
+</ng-container>
+<ng-template #spinner>
+  <mat-spinner diameter="55"></mat-spinner>
+</ng-template>
