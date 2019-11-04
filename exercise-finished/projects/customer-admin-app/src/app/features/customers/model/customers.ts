@@ -7,4 +7,11 @@ export interface Customer {
   birthday?: string;
   lifetimeOrderValue?: number;
   tags?: string[];
+  address?: CustomerAddress
+}
+
+export interface CustomerAddress {
+  location: string;
+  land: string;
+  continent: string;
 }
