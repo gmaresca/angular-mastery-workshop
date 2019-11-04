@@ -18,9 +18,20 @@ h2  {
   font-size: 28px !important;
 }
 
-mat-card {
-  mat-icon {
-    position: relative;
-    top: 4px;
+form {
+  div {
+    display:flex;
+    align-items: center;
+
+    mat-form-field {
+      margin: 10px;
+      flex: 1 0 auto;
+    }
+  }
+}
+
+.actions {
+  button {
+    margin: 0 0 0 10px;
   }
 }
