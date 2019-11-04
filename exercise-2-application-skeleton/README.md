@@ -13,7 +13,7 @@ In this exercise were going to explore how to scaffold application skeleton usin
 - Create lazy loaded HomeModule and CustomersModule
 
 ## TODO 0: Start application
-Make sure your application is running by executing `npm start`
+Make sure your application is installed `npm ci` and is running by executing `npm start`
 
 ## TODO 1: Create CoreModule
 We're going to use Angular Schematics to help us scaffold base application structure

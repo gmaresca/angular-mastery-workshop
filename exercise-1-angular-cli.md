@@ -49,7 +49,7 @@ In this exercise were going to explore Angular CLI
 2. Open browser at `http://localhost:4200` to see the application running
 3. Adjust the `start` script in the `package.json` file by adding `--open` flag, stop running app and restart it using `npm start`
 4. Once running open your browsers DEV tools and explore the network tab about what kind of files represent the application and check their size
-5. Add new `start:prod` script to your `package.json` file and add both `--open` and `--prod` flags, stop running app and restart it using `npm start:prod`
+5. Add new `start:prod` script to your `package.json` file and add both `--open` and `--prod` flags, stop running app and restart it using `npm run start:prod`
 6. Once running open your browsers DEV tools and explore the network tab about what kind of files represent the application and check their size
 7. What other difference besides the size of the files was between the DEV and the PROD mode and what is its purpose?
 
@@ -93,7 +93,7 @@ Analyzing application can come in handy when debugging produced bundle size...
 
 1. Install `webpack-bundle-analyzer` as a dev dependency (`npm i -D`)
 2. Add `analyze` script to your `package.json` file which will run `ng build` with `--prod` and `--stats-json` flags
-3. Extend the command with `&& webpack-bundle-analyze ./dist/customer-admin-app/stats-es2015.json`
+3. Extend the command with `&& webpack-bundle-analyzer ./dist/customer-admin-app/stats.json` (or `stats-es2015.json` based on your current browserlist / differential loading configuration)
 4. Run the analyze command and explore the website in opened tab (try checking "Show content of concatenated modules" checkbox)
 
 ### Troubleshooting
