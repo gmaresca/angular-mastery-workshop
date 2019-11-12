@@ -6,9 +6,7 @@ import { CustomersRoutingModule } from './customers-routing.module';
 import { CustomersComponent } from './customers.component';
 
 @NgModule({
-  declarations: [
-    CustomersComponent
-  ],
+  declarations: [CustomersComponent],
   imports: [SharedModule, CustomersRoutingModule],
   providers: [],
 })

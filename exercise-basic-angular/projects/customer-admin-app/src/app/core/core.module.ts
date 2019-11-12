@@ -12,9 +12,7 @@ registerLocaleData(localeDeCh);
 @NgModule({
   declarations: [HeaderComponent, FooterComponent],
   imports: [SharedModule],
-  providers: [
-    { provide: LOCALE_ID, useValue: 'de-CH' },
-  ],
+  providers: [{ provide: LOCALE_ID, useValue: 'de-CH' }],
   exports: [HeaderComponent, FooterComponent],
 })
 export class CoreModule {}

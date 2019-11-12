@@ -3,5 +3,5 @@ export interface Customer {
   name: string;
   isVip?: boolean;
   surname: string;
-  orders?: number [];
+  orders?: number[];
 }

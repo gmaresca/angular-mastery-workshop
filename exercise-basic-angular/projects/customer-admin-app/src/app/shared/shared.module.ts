@@ -53,7 +53,7 @@ import { TagListComponent } from './tag-list/tag-list.component';
     MatProgressSpinnerModule,
 
     // local
-    TagListComponent
+    TagListComponent,
   ],
   entryComponents: [],
 })

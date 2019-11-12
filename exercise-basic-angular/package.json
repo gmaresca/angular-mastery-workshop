@@ -1,5 +1,5 @@
 {
-  "name": "exercise-3-basic-angular",
+  "name": "exercise-basic-angular",
   "version": "0.0.0",
   "scripts": {
     "start": "npm-run-all --parallel serve serve:api",
