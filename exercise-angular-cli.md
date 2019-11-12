@@ -2,7 +2,7 @@
 
 by [@tomastrajan](https://twitter.com/tomastrajan)
 
-# Welcome to Exercise #1 - Angular CLI
+# Welcome to exercise - Angular CLI
 
 In this exercise were going to explore Angular CLI
 

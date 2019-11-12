@@ -2,7 +2,7 @@
 
 by [@tomastrajan](https://twitter.com/tomastrajan)
 
-# Welcome to Exercise #2 - Application skeleton
+# Welcome to exercise - Application skeleton
 
 In this exercise were going to explore how to scaffold application skeleton using Angular CLI and Angular Schematics
 
