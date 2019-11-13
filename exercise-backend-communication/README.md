@@ -2,7 +2,7 @@
 
 by [@tomastrajan](https://twitter.com/tomastrajan)
 
-# Welcome to Exercise #5 - Backend communication
+# Welcome to exercise - Backend communication
 
 In this exercise were going to work with backend communication
 

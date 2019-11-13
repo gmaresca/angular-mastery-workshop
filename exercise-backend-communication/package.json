@@ -1,5 +1,5 @@
 {
-  "name": "exercise-5-backend-communication",
+  "name": "exercise-backend-communication",
   "version": "0.0.0",
   "scripts": {
     "start": "npm-run-all --parallel serve serve:api",
