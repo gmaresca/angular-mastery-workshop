@@ -2,7 +2,7 @@
 
 by [@tomastrajan](https://twitter.com/tomastrajan)
 
-# Welcome to Exercise #3 - Basic Angular
+# Welcome to exercise - Basic Angular
 
 In this exercise were going to explore creation of components & services
 

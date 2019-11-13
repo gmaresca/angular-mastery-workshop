@@ -2,7 +2,7 @@
 
 by [@tomastrajan](https://twitter.com/tomastrajan)
 
-# Welcome to Exercise #4 - RxJs reactive programming
+# Welcome to exercise - RxJs reactive programming
 
 In this exercise were going to explore reactive programming with RxJs in Angular applications
 

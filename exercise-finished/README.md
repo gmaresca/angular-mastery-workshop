@@ -2,7 +2,7 @@
 
 by [@tomastrajan](https://twitter.com/tomastrajan)
 
-# Welcome to Finished Exercise
+# Welcome to exercise - FInished
 
 * this exercise contains working (reference) implementation of all other exercises
 * always try to solve exercises by yourself to learn the most about Angular
