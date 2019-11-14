@@ -40,6 +40,9 @@ export class CustomerEditorComponent implements OnInit {
   }
 
   submit(customer: Customer) {
+    if (!this.customerForm.valid) {
+      return;
+    }
     const customerFormValue = this.customerForm.getRawValue();
     this.customersBackendService
       .update({
