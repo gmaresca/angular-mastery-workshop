@@ -1,6 +1,8 @@
 <mat-card [ngClass]="{ vip: customer.isVip }">
   <div>
-    <mat-icon matTooltip="Name" matTooltipPosition="above">{{customer.isVip ? 'star' : 'person'}}</mat-icon>
+    <mat-icon matTooltip="Name" matTooltipPosition="above">{{
+      customer.isVip ? 'star' : 'person'
+    }}</mat-icon>
     <p>{{ customer.name }} {{ customer.middleName }} {{ customer.surname }}</p>
   </div>
   <div>

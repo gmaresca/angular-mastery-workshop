@@ -14,28 +14,40 @@
   <mat-card>
     <form [formGroup]="customerForm">
       <div>
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" color="accent">
           <mat-label>Name</mat-label>
           <input matInput placeholder="Name" formControlName="name" />
         </mat-form-field>
 
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" color="accent">
           <mat-label>Surname</mat-label>
           <input matInput placeholder="Surname" formControlName="surname" />
         </mat-form-field>
       </div>
       <div>
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" color="accent">
           <mat-label>Birthday</mat-label>
-          <input matInput [matDatepicker]="picker" placeholder="Birthday" formControlName="birthday">
+          <input
+            matInput
+            [matDatepicker]="picker"
+            placeholder="Birthday"
+            formControlName="birthday"
+          />
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" color="accent">
+          <mat-label>VIP</mat-label>
+          <mat-select formControlName="isVip">
+            <mat-option [value]="true">Yes</mat-option>
+            <mat-option [value]="false">No</mat-option>
+          </mat-select>
         </mat-form-field>
       </div>
     </form>
 
     <div class="actions">
-
       <button mat-raised-button (click)="submit(c)" color="accent">Submit</button>
       <button mat-flat-button (click)="reset(c)">Reset</button>
     </div>

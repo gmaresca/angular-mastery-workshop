@@ -11,9 +11,8 @@ describe('TagListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [NoopAnimationsModule, SharedModule]
-    })
-    .compileComponents();
+      imports: [NoopAnimationsModule, SharedModule],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

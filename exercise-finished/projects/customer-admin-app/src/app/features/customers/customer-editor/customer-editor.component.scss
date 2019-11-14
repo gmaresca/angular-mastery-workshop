@@ -19,18 +19,18 @@ h1 {
   }
 }
 
-h2  {
+h2 {
   font-size: 28px !important;
 }
 
 form {
   div {
-    display:flex;
+    display: flex;
     align-items: center;
 
     mat-form-field {
       margin: 10px;
-      flex: 1 0 auto;
+      flex: 1 0;
     }
   }
 }

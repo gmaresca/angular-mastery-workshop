@@ -66,7 +66,7 @@ import { TagListComponent } from './tag-list/tag-list.component';
     // local
     CoinFormatPipe,
     CoinDirective,
-    TagListComponent
+    TagListComponent,
   ],
   entryComponents: [ConfirmDialogComponent],
 })

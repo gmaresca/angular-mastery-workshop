@@ -13,7 +13,7 @@ describe('CustomersBackendService', () => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       providers: [
-        {provide: NotificationService, useClass: ReactiveNotificationService},
+        { provide: NotificationService, useClass: ReactiveNotificationService },
         CustomersBackendService,
       ],
     });

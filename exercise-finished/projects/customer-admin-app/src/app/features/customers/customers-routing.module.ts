@@ -9,6 +9,7 @@ const routes: Routes = [
   { path: '', component: CustomersComponent },
   { path: 'details/:id', component: CustomerDetailsComponent },
   { path: 'editor/:id', component: CustomerEditorComponent },
+  { path: 'new', component: CustomerEditorComponent },
 ];
 
 @NgModule({

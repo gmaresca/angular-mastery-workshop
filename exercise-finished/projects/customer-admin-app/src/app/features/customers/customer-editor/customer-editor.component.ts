@@ -28,12 +28,13 @@ export class CustomerEditorComponent implements OnInit {
     this.customerForm = this.fb.group({
       name: ['', [Validators.required]],
       surname: ['', [Validators.required]],
-      birthday: ['', [Validators.required]]
+      birthday: ['', [Validators.required]],
+      isVip: [false],
     });
 
     this.customer = this.activatedRoute.paramMap.pipe(
       map(paramMap => paramMap.get('id')),
-      switchMap(id => this.customersBackendService.get(parseInt(id, 10))),
+      switchMap((id: string) => this.customersBackendService.get(parseInt(id, 10))),
       tap(customer => this.customerForm.patchValue({ ...customer })),
     );
   }
@@ -43,7 +44,7 @@ export class CustomerEditorComponent implements OnInit {
     this.customersBackendService
       .update({
         ...customer,
-        ...customerFormValue
+        ...customerFormValue,
       })
       .subscribe(() => this.router.navigate(['../../'], { relativeTo: this.activatedRoute }));
   }
