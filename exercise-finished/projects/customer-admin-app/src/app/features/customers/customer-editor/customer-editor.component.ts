@@ -30,6 +30,11 @@ export class CustomerEditorComponent implements OnInit {
       surname: ['', [Validators.required]],
       birthday: ['', [Validators.required]],
       isVip: [false],
+      address: this.fb.group({
+        location: ['', [Validators.required]],
+        land: ['', [Validators.required]],
+        continent: ['', [Validators.required, Validators.minLength(3)]],
+      }),
     });
 
     this.customer = this.activatedRoute.paramMap.pipe(
