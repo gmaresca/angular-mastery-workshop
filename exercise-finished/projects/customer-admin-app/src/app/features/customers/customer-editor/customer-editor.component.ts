@@ -35,6 +35,7 @@ export class CustomerEditorComponent implements OnInit {
         land: ['', [Validators.required]],
         continent: ['', [Validators.required, Validators.minLength(3)]],
       }),
+      tags: [[]],
     });
 
     this.customer = this.activatedRoute.paramMap.pipe(
@@ -59,5 +60,15 @@ export class CustomerEditorComponent implements OnInit {
 
   reset(customer: Customer) {
     this.customerForm.patchValue(customer);
+  }
+
+  addTag(tag: string) {
+    const tags = this.customerForm.getRawValue().tags;
+    this.customerForm.patchValue({ tags: [...tags, tag] });
+  }
+
+  removeTag(tag: string) {
+    const tags = this.customerForm.getRawValue().tags;
+    this.customerForm.patchValue({ tags: tags.filter(t => t !== tag) });
   }
 }

@@ -74,6 +74,9 @@
           </mat-error>
         </mat-form-field>
       </div>
+      <div>
+        <my-org-tag-list [tags]="customerForm.get('tags').value" (add)="addTag($event)" (remove)="removeTag($event)"></my-org-tag-list>
+      </div>
     </form>
 
     <div class="actions">

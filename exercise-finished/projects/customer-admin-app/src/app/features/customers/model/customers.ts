@@ -1,9 +1,9 @@
 export interface Customer {
   id: number;
   name: string;
-  isVip?: boolean;
   surname: string;
   birthday?: string;
+  isVip?: boolean;
   lifetimeOrderValue?: number;
   tags?: string[];
   address?: CustomerAddress;
