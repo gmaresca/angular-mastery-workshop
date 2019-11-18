@@ -1,0 +1,94 @@
+<ng-container *ngIf="customer | async as c; else spinner">
+  <h1>
+    {{ c.name }} {{ c.surname }} <mat-icon *ngIf="c.isVip">star</mat-icon>
+    <button
+      mat-icon-button
+      routerLink="../../../customers"
+      matTooltip="Close customer details"
+      matTooltipPosition="above"
+    >
+      <mat-icon (click)="navigateToCustomerOverview()">clear</mat-icon>
+    </button>
+  </h1>
+
+  <mat-card>
+    <form [formGroup]="customerForm">
+      <div>
+        <mat-form-field appearance="outline" color="accent">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Name" formControlName="name" />
+          <mat-error>Please, provide name</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" color="accent">
+          <mat-label>Surname</mat-label>
+          <input matInput placeholder="Surname" formControlName="surname" />
+          <mat-error>Please, provide surname</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="outline" color="accent">
+          <mat-label>Birthday</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            placeholder="Birthday"
+            formControlName="birthday"
+          />
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error>Please, provide birthday</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" color="accent">
+          <mat-label>VIP</mat-label>
+          <mat-select formControlName="isVip">
+            <mat-option [value]="true">Yes</mat-option>
+            <mat-option [value]="false">No</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div formGroupName="address">
+        <mat-form-field appearance="outline" color="accent">
+          <mat-label>Location</mat-label>
+          <input matInput placeholder="Location" formControlName="location" />
+          <mat-error>Please, provide location</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" color="accent">
+          <mat-label>Land</mat-label>
+          <input matInput placeholder="Land" formControlName="land" />
+          <mat-error>Please, provide land</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" color="accent">
+          <mat-label>Continent</mat-label>
+          <input matInput placeholder="Continent" formControlName="continent" />
+          <mat-error *ngIf="customerForm.get('address.continent').hasError('required')"
+            >Please, provide continent
+          </mat-error>
+          <mat-error *ngIf="customerForm.get('address.continent').hasError('minlength')"
+            >Minimum length is
+            {{ customerForm.get('address.continent').errors['minlength'].requiredLength }}, please
+            provide longer value
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <my-org-tag-list
+          [tags]="customerForm.get('tags').value"
+          (add)="addTag($event)"
+          (remove)="removeTag($event)"
+        ></my-org-tag-list>
+      </div>
+    </form>
+
+    <div class="actions">
+      <button mat-raised-button (click)="submit(c)" color="accent">Submit</button>
+      <button mat-flat-button (click)="reset(c)">Reset</button>
+    </div>
+  </mat-card>
+</ng-container>
+<ng-template #spinner>
+  <mat-spinner diameter="55"></mat-spinner>
+</ng-template>
