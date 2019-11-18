@@ -7,7 +7,7 @@
       matTooltip="Close customer details"
       matTooltipPosition="above"
     >
-      <mat-icon>clear</mat-icon>
+      <mat-icon (click)="navigateToCustomerOverview()">clear</mat-icon>
     </button>
   </h1>
 
@@ -75,7 +75,11 @@
         </mat-form-field>
       </div>
       <div>
-        <my-org-tag-list [tags]="customerForm.get('tags').value" (add)="addTag($event)" (remove)="removeTag($event)"></my-org-tag-list>
+        <my-org-tag-list
+          [tags]="customerForm.get('tags').value"
+          (add)="addTag($event)"
+          (remove)="removeTag($event)"
+        ></my-org-tag-list>
       </div>
     </form>
 

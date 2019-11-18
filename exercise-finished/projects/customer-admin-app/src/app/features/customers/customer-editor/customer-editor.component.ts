@@ -1,11 +1,25 @@
-import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { map, switchMap, tap } from 'rxjs/operators';
 
 import { Customer } from '../model/customers';
 import { CustomersBackendService } from '../services/customers-backend.service';
+
+const NEW_CUSTOMER: Partial<Customer> = {
+  name: '',
+  surname: '',
+  isVip: false,
+  lifetimeOrderValue: 0,
+  tags: [],
+  birthday: '',
+  address: {
+    continent: '',
+    land: '',
+    location: '',
+  },
+};
 
 @Component({
   selector: 'my-org-customer-editor',
@@ -13,9 +27,11 @@ import { CustomersBackendService } from '../services/customers-backend.service';
   styleUrls: ['./customer-editor.component.scss'],
 })
 export class CustomerEditorComponent implements OnInit {
-  customer: Observable<Customer>;
+  customer: Observable<Partial<Customer>>;
 
   customerForm: FormGroup;
+
+  private isNewCustomer = false;
 
   constructor(
     private fb: FormBuilder,
@@ -40,22 +56,33 @@ export class CustomerEditorComponent implements OnInit {
 
     this.customer = this.activatedRoute.paramMap.pipe(
       map(paramMap => paramMap.get('id')),
-      switchMap((id: string) => this.customersBackendService.get(parseInt(id, 10))),
+      tap(id => (this.isNewCustomer = !id)),
+      switchMap((id: string) =>
+        id ? this.customersBackendService.get(parseInt(id, 10)) : of(NEW_CUSTOMER),
+      ),
       tap(customer => this.customerForm.patchValue({ ...customer })),
     );
   }
 
   submit(customer: Customer) {
     if (!this.customerForm.valid) {
+      this.customerForm.markAllAsTouched();
       return;
     }
-    const customerFormValue = this.customerForm.getRawValue();
-    this.customersBackendService
-      .update({
-        ...customer,
-        ...customerFormValue,
-      })
-      .subscribe(() => this.router.navigate(['../../'], { relativeTo: this.activatedRoute }));
+    const customerPayload = {
+      ...customer,
+      ...this.customerForm.getRawValue(),
+    };
+
+    if (this.isNewCustomer) {
+      this.customersBackendService
+        .create(customerPayload)
+        .subscribe(() => this.navigateToCustomerOverview());
+    } else {
+      this.customersBackendService
+        .update(customerPayload)
+        .subscribe(() => this.navigateToCustomerOverview());
+    }
   }
 
   reset(customer: Customer) {
@@ -70,5 +97,11 @@ export class CustomerEditorComponent implements OnInit {
   removeTag(tag: string) {
     const tags = this.customerForm.getRawValue().tags;
     this.customerForm.patchValue({ tags: tags.filter(t => t !== tag) });
+  }
+
+  private navigateToCustomerOverview() {
+    this.router.navigate([this.isNewCustomer ? '../' : '../../'], {
+      relativeTo: this.activatedRoute,
+    });
   }
 }
