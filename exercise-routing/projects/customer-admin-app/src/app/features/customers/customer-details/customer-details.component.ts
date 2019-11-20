@@ -31,6 +31,7 @@ export class CustomerDetailsComponent implements OnInit {
     // TODO 10: OPTIONAL: use combineLatest (RxJs creation operator) to combine original "paramMap" stream
     // with stream of "this.reloadTrigger" (ignore the trigger value, used just for triggering)
     // to reload customer when adding or removing tags to the backend...
+    // it will need to be piped with "startWith" operator to trigger initial load
 
     // TODO 11: use Angular Schematics to generate "Auth" guard in customers feature ( features/customers/auth )
     // for "CanActivate" check...

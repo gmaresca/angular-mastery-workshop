@@ -9,7 +9,7 @@ const routes: Routes = [
   // TODO 7: add new route for 'details' followed by the path param ':id' which will navigate to CustomerDetailsComponent
   // can be navigated using the "eye" icon on the customer item
 
-  // TODO 12: add "canActivate" property which will use our newly created "AuthGuard"
+  // TODO 12: add "canActivate" property to details route which will use our newly created "AuthGuard"
   // try to navigate to the customer details using the "eye" icon on the customer item
   // try to change implementation of "isAdmin" method of the "AuthService" and navigate again ;)
 ];
