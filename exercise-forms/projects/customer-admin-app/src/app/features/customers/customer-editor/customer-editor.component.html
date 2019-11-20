@@ -24,7 +24,7 @@
         the main reference point being "formControlName" directive which corresponds to the property in form group
      -->
 
-    <!-- TODO 7: add remining <mat-form-field> for other string form properties based on previous step -->
+    <!-- TODO 7: add similar <mat-form-field> for "surname" form property -->
     <!-- HINT: you can wrap multiple form fields using <div> tag which will make them in separate row, eg
 
      <div>
@@ -33,13 +33,25 @@
      </div>
     -->
 
-    <!-- TODO 8: add <mat-form-field> for the isVip boolean value, explore how we're using <mat-select>
+    <!-- TODO 8: add <mat-form-field> for the "isVip" boolean value, explore how we're using <mat-select> and "birthday" form property
         <mat-form-field appearance="outline" color="accent">
           <mat-label>VIP</mat-label>
           <mat-select formControlName="isVip">
             <mat-option [value]="true">Yes</mat-option>
             <mat-option [value]="false">No</mat-option>
           </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" color="accent">
+          <mat-label>Birthday</mat-label>
+          <input
+            matInput
+            [matDatepicker]="picker"
+            placeholder="Birthday"
+            formControlName="birthday"
+          />
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
      -->
 
@@ -59,7 +71,13 @@
 
      -->
 
-    <!-- TODO 12: run application and explore created form -->
+    <!-- TODO 12: run application and explore created form, next TOTOs in "customer-editor.component.ts" file -->
+
+    <!-- TODO 20: add "<mat-error>Some error message</mat-error> inside of relevant <mat-form-field>s"
+
+      You might want to use <mat-error *ngIf="customerForm.get('name').hasError('required')">
+      for every validator if you specified more than one validator for that field
+    -->
 
     <div class="actions">
       <button mat-raised-button (click)="submit(c)" color="accent">Submit</button>

@@ -25,13 +25,14 @@ export class CustomerEditorComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // TODO 3: use form builder to define reactive form using form group
+    // TODO 3: use form builder to define reactive form using form "group"
     // implement form for every property of "Customer" interface (besides "id")
     // property is implemented using as "<some-property: [<default-value>, [<validators>]]>", hint: most default values will be empty string or boolean value
-    // the from group can have property which is also form group (for nested objects)
+    // the from group can have property which is also form group (for nested objects, eg "address")
     this.customerForm = undefined;
 
     // TODO 4: most string values should use "required" validator (from "Validators"), feel free to experiment with other built in validators
+    // hint: required validator is just a property NOT a funtion (as you might get it by the IDE code completion)
 
     // next TODO items can be found in "customer-editor.component.html" file
 
@@ -49,6 +50,7 @@ export class CustomerEditorComponent implements OnInit {
     // TODO 19: use form "valid" property to NOT submit form when the form is invalid
     // it is also nice to highlight all invalid fields using form "markAllAsTouched()" method
     // try to edit customer and see difference by navigating to customer details or reloading page
+    // last todo is back in the "customer-editor.component.html"
     if (true) {
       return;
     }
