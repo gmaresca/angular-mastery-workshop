@@ -19,7 +19,6 @@ export class CustomerEditorComponent implements OnInit {
 
   constructor(
     // TODO 2: inject "FormBuilder"
-    private fb: FormBuilder,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private customersBackendService: CustomersBackendService,
