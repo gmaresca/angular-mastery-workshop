@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { combineLatest, Observable, Subject } from 'rxjs';
+import { combineLatest, Observable, of, Subject } from 'rxjs';
 import { map, startWith, switchMap } from 'rxjs/operators';
 
 import { Customer } from '../model/customers';
@@ -17,18 +17,24 @@ export class CustomerDetailsComponent implements OnInit {
   customer: Observable<Customer>;
 
   constructor(
+    // TODO 8: inject "activatedRoute" of type "ActivatedRoute"
     private activatedRoute: ActivatedRoute,
     private customersBackendService: CustomersBackendService,
   ) {}
 
   ngOnInit() {
-    this.customer = combineLatest([
-      this.activatedRoute.paramMap,
-      this.reloadTrigger.asObservable().pipe(startWith('init')),
-    ]).pipe(
-      map(([paramMap]) => paramMap.get('id')),
-      switchMap(id => this.customersBackendService.get(parseInt(id, 10))),
-    );
+    // TODO 9: use "paramMap" stream of the "activatedRoute"
+    // map (RxJs operator) it into "id" (from the "paramMap") and then
+    // switchMap (RxJs operator) the "id" into "customersBackendService.get" requests
+    this.customer = undefined;
+
+    // TODO 10: OPTIONAL: use combineLatest (RxJs creation operator) to combine original "paramMap" stream
+    // with stream of "this.reloadTrigger" (ignore the trigger value, used just for triggering)
+    // to reload customer when adding or removing tags to the backend...
+
+    // TODO 11: use Angular Schematics to generate "Auth" guard in customers feature ( features/customers/auth )
+    // for "CanActivate" check...
+    // inside of  new guard file, inject "AuthService" and use "isAdmin" method
   }
 
   addTag(tagToAdd: string, customer: Customer) {

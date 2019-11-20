@@ -7,9 +7,12 @@ import { CustomerDetailsComponent } from './customer-details/customer-details.co
 
 const routes: Routes = [
   { path: '', component: CustomersComponent },
-  { path: 'details/:id', component: CustomerDetailsComponent },
-  { path: 'editor/:id', component: CustomerEditorComponent },
-  { path: 'new', component: CustomerEditorComponent },
+  // TODO 7: add new route for 'details' followed by the path param ':id' which will navigate to CustomerDetailsComponent
+  // can be navigated using the "eye" icon on the customer item
+
+  // TODO 12: add "canActivate" property which will use our newly created "AuthGuard"
+  // try to navigate to the customer details using the "eye" icon on the customer item
+  // try to change implementation of "isAdmin" method of the "AuthService" and navigate again ;)
 ];
 
 @NgModule({
