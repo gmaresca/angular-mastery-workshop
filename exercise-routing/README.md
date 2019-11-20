@@ -6,7 +6,11 @@ by [@tomastrajan](https://twitter.com/tomastrajan)
 
 In this exercise were going to work with Angular routing
 
-- 
+- navigate to routes
+- route redirects and catch all route
+- routes with path params
+- activated route
+- guards
 
 
 ## Notice ⚠️
