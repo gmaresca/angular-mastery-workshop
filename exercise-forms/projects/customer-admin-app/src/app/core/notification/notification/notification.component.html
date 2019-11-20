@@ -1,0 +1,11 @@
+<mat-card *ngFor="let notification of notifications | async" [ngClass]="notification.type">
+  <mat-icon>{{ notification.type }}</mat-icon>
+  <p>{{ notification.message }}</p>
+  <button
+    mat-icon-button
+    *ngIf="notification.type === 'error'"
+    (click)="removeNotification(notification)"
+  >
+    <mat-icon>clear</mat-icon>
+  </button>
+</mat-card>

@@ -1,0 +1,72 @@
+<ng-container *ngIf="customer | async as c; else spinner">
+  <h1>
+    {{ c.name }} {{ c.surname }} <mat-icon *ngIf="c.isVip">star</mat-icon>
+    <button
+      mat-icon-button
+      routerLink="../../../customers"
+      matTooltip="Close customer details"
+      matTooltipPosition="above"
+    >
+      <mat-icon (click)="navigateToCustomerOverview()">clear</mat-icon>
+    </button>
+  </h1>
+
+  <mat-card>
+    <!-- TODO 5: add <from> tag with "formGroup" directive which references our "customerForm" -->
+
+    <!-- TODO 6: inside of the form add form fields like the following
+
+       <mat-form-field appearance="outline" color="accent">
+          <mat-label>Name</mat-label>
+          <input matInput placeholder="Name" formControlName="name" />
+        </mat-form-field>
+
+        the main reference point being "formControlName" directive which corresponds to the property in form group
+     -->
+
+    <!-- TODO 7: add remining <mat-form-field> for other string form properties based on previous step -->
+    <!-- HINT: you can wrap multiple form fields using <div> tag which will make them in separate row, eg
+
+     <div>
+        <mat-form-field>...</<mat-form-field>
+        <mat-form-field>...</<mat-form-field>
+     </div>
+    -->
+
+    <!-- TODO 8: add <mat-form-field> for the isVip boolean value, explore how we're using <mat-select>
+        <mat-form-field appearance="outline" color="accent">
+          <mat-label>VIP</mat-label>
+          <mat-select formControlName="isVip">
+            <mat-option [value]="true">Yes</mat-option>
+            <mat-option [value]="false">No</mat-option>
+          </mat-select>
+        </mat-form-field>
+     -->
+
+
+    <!-- TODO 9: add <div> with "formGroupName" directive for nested "address" form group -->
+    <!-- TODO 10: implement string based <mat-form-field>s for address properties -->
+
+    <!-- TODO 11: add custom taglist component
+
+      <my-org-tag-list
+          [tags]="customerForm.get('tags').value"
+          (add)="addTag($event)"
+          (remove)="removeTag($event)"
+        ></my-org-tag-list>
+
+        notice how we're retrieving form value to use custom element as a part of the reactive from
+
+     -->
+
+    <!-- TODO 12: run application and explore created form -->
+
+    <div class="actions">
+      <button mat-raised-button (click)="submit(c)" color="accent">Submit</button>
+      <button mat-flat-button (click)="reset(c)">Reset</button>
+    </div>
+  </mat-card>
+</ng-container>
+<ng-template #spinner>
+  <mat-spinner diameter="55"></mat-spinner>
+</ng-template>

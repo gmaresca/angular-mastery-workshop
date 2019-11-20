@@ -1,0 +1,30 @@
+<h1>Customers</h1>
+
+<div class="search">
+  <form [formGroup]="searchForm">
+    <mat-form-field appearance="outline" color="accent" floatLabel="always">
+      <mat-label>Customer name</mat-label>
+      <input
+        #queryInput
+        matInput
+        type="text"
+        formControlName="query"
+        (keyup.escape)="resetSearchQuery()"
+        cdkFocusInitial
+      />
+      <button mat-button matSuffix mat-icon-button (click)="resetSearchQuery()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </form>
+  <div class="spacer"></div>
+
+  <mat-spinner *ngIf="loading" diameter="55"></mat-spinner>
+</div>
+
+<my-org-customer-item
+  *ngFor="let customer of customers | async"
+  [customer]="customer"
+  (remove)="removeCustomer($event)"
+>
+</my-org-customer-item>

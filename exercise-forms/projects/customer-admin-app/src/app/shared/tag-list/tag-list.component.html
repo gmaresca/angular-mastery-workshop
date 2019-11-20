@@ -1,0 +1,19 @@
+<mat-form-field appearance="outline" color="accent">
+  <mat-label>Add tag</mat-label>
+  <input
+    matInput
+    [value]="newTag"
+    (keyup)="updateNewTag($event)"
+    (keydown.enter)="addTag()"
+    autocomplete="new-password"
+  />
+</mat-form-field>
+<button mat-mini-fab (click)="addTag()" [disabled]="newTag.length === 0">
+  <mat-icon>add</mat-icon>
+</button>
+<div *ngFor="let tag of tags">
+  {{ tag }}
+  <button mat-icon-button (click)="removeTag(tag)">
+    <mat-icon>clear</mat-icon>
+  </button>
+</div>
