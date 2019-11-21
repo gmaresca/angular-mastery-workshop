@@ -86,7 +86,7 @@ export class CustomerEditorComponent implements OnInit {
   }
 
   reset(customer: Customer) {
-    this.customerForm.patchValue(customer);
+    this.customerForm.reset(customer);
   }
 
   addTag(tag: string) {
