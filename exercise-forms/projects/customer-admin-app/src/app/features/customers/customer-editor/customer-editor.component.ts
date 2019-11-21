@@ -64,7 +64,7 @@ export class CustomerEditorComponent implements OnInit {
   }
 
   reset(customer: Customer) {
-    // TODO 18: use form "patchValue" to pass in original customer (from backend) to reset from value
+    // TODO 18: use form "reset" method to reset touched / dirty state and to pass in original customer (from backend) to reset from value
   }
 
   addTag(tag: string) {
