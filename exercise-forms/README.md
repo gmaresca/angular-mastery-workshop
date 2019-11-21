@@ -6,7 +6,11 @@ by [@tomastrajan](https://twitter.com/tomastrajan)
 
 In this exercise were going to work with Angular forms
 
-- ...
+- use Angular reactive froms
+- define form using form builder
+- use validators
+- displaying form & validation errors
+- programmatic form interaction
 
 
 ## Notice ⚠️
