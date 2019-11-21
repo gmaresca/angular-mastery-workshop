@@ -13,7 +13,7 @@
     "e2e": "ng e2e",
     "analyze": "npm-run-all analyze:*",
     "analyze:stats": "ng build --prod --stats-json",
-    "analyze:open": "webpack-bundle-analyzer ./dist/customer-admin-app/stats-es2015.json",
+    "analyze:open": "webpack-bundle-analyzer ./dist/customer-admin-app/stats.json",
     "format:test": "prettier \"projects/**/*.{ts,scss,json,html,js}\" --list-different",
     "format:write": "prettier \"projects/**/*.{ts,scss,json,html,js}\" --write"
   },

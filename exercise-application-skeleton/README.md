@@ -36,7 +36,7 @@ Now lets create some basic layout with header (and navigation), footer and cente
 4. Add `<my-org-footer></my-org-footer>` as the last component in the `app.component.html` template 
 5. Replace `<h1>` in the `app.component.html` template with the `<div class="content"></div>` (it will use some prepared styles you can find in `app.component.scss`)
 6. Import `MatToolbarModule` and `MatButtonModule` from `@angular/material` inside of `shared.module.ts` and add them to both `imports: [ ]` and `exports: [ ]` arrays...
-7. Add `<mat-toolbar [color]="primary">Customer Admin</mat-toolbar>` in the `header.component.html` (remove original content`<p>` tag) 
+7. Add `<mat-toolbar color="primary">Customer Admin</mat-toolbar>` in the `header.component.html` (remove original content`<p>` tag) 
 
 ## Todo 4: Prepare routing
 
@@ -61,7 +61,11 @@ Now lets create some basic layout with header (and navigation), footer and cente
 
 ```
 
-Try to use `http://localhost:4200/` url in your brwoser and see what happens!
+Try to use `http://localhost:4200/` url in your browser and see what happens!
+
+
+## Todo 6: Analyze
+1. Run `npm run analyze` to see how the graph changed as we're now having two lazy loaded modules
 
 # Great! We have nice application skeleton, layout and routing with lazy loading, that's a great starting point to start developing features!
 
