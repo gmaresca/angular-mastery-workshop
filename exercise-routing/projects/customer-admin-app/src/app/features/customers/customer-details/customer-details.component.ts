@@ -18,7 +18,6 @@ export class CustomerDetailsComponent implements OnInit {
 
   constructor(
     // TODO 8: inject "activatedRoute" of type "ActivatedRoute"
-    private activatedRoute: ActivatedRoute,
     private customersBackendService: CustomersBackendService,
   ) {}
 
