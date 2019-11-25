@@ -57,6 +57,37 @@ describe('CustomersBackendService', () => {
     req.flush(MOCK_CUSTOMERS);
   });
 
+  it('creates customer', () => {
+    const MOCK_CUSTOMER = { id: 0, name: 'John', surname: 'Snow' };
+
+    service.create({ name: 'John', surname: 'Snow' }).subscribe(customer => {
+      expect(customer).toEqual(MOCK_CUSTOMER);
+    });
+
+    const req = httpTestingController.expectOne(`${RESOURCE_URL}`);
+    expect(req.request.method).toBe('POST');
+    req.flush(MOCK_CUSTOMER);
+
+    expect(mockNotificationsService.info).toHaveBeenCalledTimes(1);
+    expect(mockNotificationsService.info).toHaveBeenCalledWith('Customer created');
+  });
+
+
+  it('updates customer', () => {
+    const MOCK_CUSTOMER = { id: 0, name: 'John', surname: 'Snow' };
+
+    service.update(MOCK_CUSTOMER).subscribe(customer => {
+      expect(customer).toEqual(MOCK_CUSTOMER);
+    });
+
+    const req = httpTestingController.expectOne(`${RESOURCE_URL}/0`);
+    expect(req.request.method).toBe('PUT');
+    req.flush(MOCK_CUSTOMER);
+
+    expect(mockNotificationsService.info).toHaveBeenCalledTimes(1);
+    expect(mockNotificationsService.info).toHaveBeenCalledWith('Customer updated');
+  });
+
   it('removes customer', () => {
     service.remove(0).subscribe(customer => {
       expect(customer).toEqual(null);
