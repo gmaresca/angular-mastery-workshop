@@ -2,8 +2,6 @@ import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 import { CustomersBackendService, RESOURCE_URL } from './customers-backend.service';
-import { NotificationService } from '../../../core/notification/notification.service';
-import { ReactiveNotificationService } from '../../../core/notification/reactive-notification.service';
 
 describe('CustomersBackendService', () => {
   let service: CustomersBackendService;
@@ -12,10 +10,7 @@ describe('CustomersBackendService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [
-        { provide: NotificationService, useClass: ReactiveNotificationService },
-        CustomersBackendService,
-      ],
+      providers: [CustomersBackendService],
     });
 
     service = TestBed.get(CustomersBackendService);

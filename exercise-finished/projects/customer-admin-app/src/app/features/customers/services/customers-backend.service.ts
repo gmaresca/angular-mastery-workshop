@@ -5,7 +5,7 @@ import { shareReplay, tap } from 'rxjs/operators';
 
 import { environment } from '../../../../environments/environment';
 
-import { NotificationService } from '../../../core/notification/notification.service';
+import { ReactiveNotificationService } from '../../../core/notification/reactive-notification.service';
 
 import { Customer } from '../model/customers';
 
@@ -15,7 +15,10 @@ export const RESOURCE_URL = `${environment.API_URL}/customers`;
 export class CustomersBackendService {
   customers: Observable<Customer[]>;
 
-  constructor(private httpClient: HttpClient, private notificationService: NotificationService) {
+  constructor(
+    private httpClient: HttpClient,
+    private notificationService: ReactiveNotificationService,
+  ) {
     this.customers = this.httpClient
       .get<Customer[]>(RESOURCE_URL)
       .pipe(shareReplay({ bufferSize: 1, refCount: true }));

@@ -3,9 +3,7 @@ import { RouterTestingModule } from '@angular/router/testing';
 
 import { SharedModule } from '../../../shared/shared.module';
 
-import { NotificationService } from '../../notification/notification.service';
 import { NotificationComponent } from '../../notification/notification/notification.component';
-import { ReactiveNotificationService } from '../../notification/reactive-notification.service';
 
 import { HeaderComponent } from './header.component';
 
@@ -16,7 +14,6 @@ describe('HeaderComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule, SharedModule],
-      providers: [{ provide: NotificationService, useClass: ReactiveNotificationService }],
       declarations: [HeaderComponent, NotificationComponent],
     }).compileComponents();
   }));

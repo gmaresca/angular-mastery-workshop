@@ -9,11 +9,11 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
-import { NotificationService } from '../notification/notification.service';
+import { ReactiveNotificationService } from '../notification/reactive-notification.service';
 
 @Injectable()
 export class HttpNotificationInterceptor implements HttpInterceptor {
-  constructor(private notificationService: NotificationService) {}
+  constructor(private notificationService: ReactiveNotificationService) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(req).pipe(

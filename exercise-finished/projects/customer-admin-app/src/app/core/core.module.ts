@@ -8,9 +8,7 @@ import { SharedModule } from '../shared/shared.module';
 import { HeaderComponent } from './layout/header/header.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { HttpNotificationInterceptor } from './interceptors/http-notification-interceptor.service';
-import { NotificationService } from './notification/notification.service';
 import { NotificationComponent } from './notification/notification/notification.component';
-import { ReactiveNotificationService } from './notification/reactive-notification.service';
 
 registerLocaleData(localeDeCh);
 
@@ -20,7 +18,6 @@ registerLocaleData(localeDeCh);
   providers: [
     { provide: LOCALE_ID, useValue: 'de-CH' },
     { provide: HTTP_INTERCEPTORS, useClass: HttpNotificationInterceptor, multi: true },
-    { provide: NotificationService, useClass: ReactiveNotificationService },
   ],
   exports: [HeaderComponent, FooterComponent],
 })

@@ -6,7 +6,9 @@ import { UuidService } from '../uuid/uuid.service';
 
 import { NotificationType, Notification, NotificationAction } from './notification';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class ReactiveNotificationService {
   private removeNotificationTrigger = new ReplaySubject<NotificationAction>();
   private addNotificationTrigger = new ReplaySubject<NotificationAction>();
