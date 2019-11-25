@@ -12,7 +12,7 @@
   <mat-icon>add</mat-icon>
 </button>
 <div *ngFor="let tag of tags">
-  {{ tag }}
+  <span>{{ tag }}</span>
   <button mat-icon-button (click)="removeTag(tag)">
     <mat-icon>clear</mat-icon>
   </button>
