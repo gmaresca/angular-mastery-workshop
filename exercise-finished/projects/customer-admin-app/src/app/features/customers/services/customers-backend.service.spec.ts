@@ -4,8 +4,6 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { ReactiveNotificationService } from '../../../core/notification/reactive-notification.service';
 
 import { CustomersBackendService, RESOURCE_URL } from './customers-backend.service';
-import { of } from 'rxjs';
-import { Notification } from '../../../core/notification/notification';
 
 describe('CustomersBackendService', () => {
   let service: CustomersBackendService;
@@ -71,7 +69,6 @@ describe('CustomersBackendService', () => {
     expect(mockNotificationsService.info).toHaveBeenCalledTimes(1);
     expect(mockNotificationsService.info).toHaveBeenCalledWith('Customer created');
   });
-
 
   it('updates customer', () => {
     const MOCK_CUSTOMER = { id: 0, name: 'John', surname: 'Snow' };

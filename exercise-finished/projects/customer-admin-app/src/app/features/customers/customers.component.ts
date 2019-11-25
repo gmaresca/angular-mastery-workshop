@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatInput } from '@angular/material';
 import { Observable } from 'rxjs';
-import { debounceTime, startWith, switchMap, tap } from 'rxjs/operators';
+import { debounceTime, shareReplay, startWith, switchMap, tap } from 'rxjs/operators';
 
 import { Customer } from './model/customers';
 import { CustomersBackendService } from './services/customers-backend.service';
@@ -46,6 +46,7 @@ export class CustomersComponent implements OnInit {
       debounceTime(300),
       switchMap(query => this.customersBackendService.findCustomers(query)),
       tap(() => (this.loading = false)),
+      shareReplay({ bufferSize: 1, refCount: true }),
     );
 
     this.queryInput.focus();
@@ -55,11 +56,11 @@ export class CustomersComponent implements OnInit {
     this.searchForm.patchValue({ query: '' });
   }
 
-  refreshCustomers() {
-    this.searchForm.patchValue({ query: this.searchForm.getRawValue().query });
-  }
-
   removeCustomer(customer: Customer) {
     this.customersBackendService.remove(customer.id).subscribe(() => this.refreshCustomers());
+  }
+
+  private refreshCustomers() {
+    this.searchForm.patchValue({ query: this.searchForm.getRawValue().query });
   }
 }
