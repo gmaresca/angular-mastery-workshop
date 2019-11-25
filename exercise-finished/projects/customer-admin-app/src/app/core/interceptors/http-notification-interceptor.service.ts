@@ -19,6 +19,7 @@ export class HttpNotificationInterceptor implements HttpInterceptor {
     return next.handle(req).pipe(
       tap({
         next: (event: HttpEvent<any>) => {
+          console.log();
           if (event instanceof HttpResponse) {
             if (event.status > 201) {
               this.notificationService.error('Backend request failed');
@@ -26,7 +27,7 @@ export class HttpNotificationInterceptor implements HttpInterceptor {
           }
         },
         error: error => {
-          this.notificationService.error('Backend request failed');
+          this.notificationService.error('Backend request error');
         },
       }),
     );
