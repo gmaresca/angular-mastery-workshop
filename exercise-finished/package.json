@@ -6,7 +6,7 @@
     "serve": "ng serve -o",
     "serve:api": "json-server --watch db.json --delay 250 --port 4300 --routes db-routes.json",
     "build": "ng build --prod",
-    "test": "npm run format:test && ng lint && ng test --watch false",
+    "test": "npm run format:test && ng lint && ng test --watch false --code-coverage",
     "watch": "ng test --reporters spec",
     "lint": "ng lint",
     "e2e": "ng e2e",

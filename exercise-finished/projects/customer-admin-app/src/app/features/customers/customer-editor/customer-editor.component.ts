@@ -99,7 +99,7 @@ export class CustomerEditorComponent implements OnInit {
     this.customerForm.patchValue({ tags: tags.filter(t => t !== tag) });
   }
 
-  private navigateToCustomerOverview() {
+  navigateToCustomerOverview() {
     this.router.navigate([this.isNewCustomer ? '../' : '../../'], {
       relativeTo: this.activatedRoute,
     });

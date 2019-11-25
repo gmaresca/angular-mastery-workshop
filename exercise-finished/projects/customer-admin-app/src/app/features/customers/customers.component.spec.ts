@@ -20,7 +20,7 @@ const MOCK_CUSTOMER: Customer = {
   surname: 'Snow',
 };
 
-fdescribe('CustomersComponent', () => {
+describe('CustomersComponent', () => {
   let testScheduler: TestScheduler;
   let component: CustomersComponent;
   let fixture: ComponentFixture<CustomersComponent>;
