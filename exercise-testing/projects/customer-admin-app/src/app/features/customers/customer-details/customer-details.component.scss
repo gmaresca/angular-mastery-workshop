@@ -1,0 +1,31 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  padding: 40px 20%;
+}
+
+mat-spinner {
+  margin: 15px auto 0 auto;
+}
+
+h1 {
+  button {
+    float: right;
+  }
+
+  mat-icon {
+    position: relative;
+    top: -4px;
+  }
+}
+
+h2 {
+  font-size: 28px !important;
+}
+
+mat-card {
+  mat-icon {
+    position: relative;
+    top: 4px;
+  }
+}

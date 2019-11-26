@@ -1,0 +1,32 @@
+<mat-card [ngClass]="{ vip: customer.isVip }">
+  <div>
+    <mat-icon matTooltip="Name" matTooltipPosition="above">{{
+      customer.isVip ? 'star' : 'person'
+    }}</mat-icon>
+    <p>{{ customer.name }} {{ customer.surname }}</p>
+  </div>
+  <div>
+    <mat-icon matTooltip="Birthday" matTooltipPosition="above">cake</mat-icon>
+    <p>{{ customer.birthday | date }}</p>
+  </div>
+  <div>
+    <mat-icon
+      [matTooltip]="'Total lifetime order value: ' + (customer.lifetimeOrderValue | coinFormat)"
+      matTooltipPosition="above"
+    >
+      attach_money
+    </mat-icon>
+    <p myOrgCoin>{{ customer.lifetimeOrderValue | coinFormat }}</p>
+  </div>
+  <div class="actions">
+    <button mat-icon-button [routerLink]="['details', customer.id]">
+      <mat-icon>remove_red_eye</mat-icon>
+    </button>
+    <button mat-icon-button [routerLink]="['editor', customer.id]">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <button mat-icon-button color="primary" (click)="confirmRemove()">
+      <mat-icon>clear</mat-icon>
+    </button>
+  </div>
+</mat-card>

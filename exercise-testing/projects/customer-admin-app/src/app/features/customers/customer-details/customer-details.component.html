@@ -1,0 +1,28 @@
+<ng-container *ngIf="customer | async as c; else spinner">
+  <h1>
+    <span>{{ c.name }} {{ c.surname }}</span> <mat-icon *ngIf="c.isVip">star</mat-icon>
+    <button
+      mat-icon-button
+      routerLink="../../../customers"
+      matTooltip="Close customer details"
+      matTooltipPosition="above"
+    >
+      <mat-icon>clear</mat-icon>
+    </button>
+  </h1>
+
+  <mat-card>
+    <h2>{{ c.address?.location || 'Unknown' }}<br /></h2>
+    <p><mat-icon>photo</mat-icon> {{ c.address.land }}</p>
+    <p><mat-icon>explore</mat-icon> {{ c.address.continent }}</p>
+  </mat-card>
+
+  <my-org-tag-list
+    [tags]="c.tags"
+    (add)="addTag($event, c)"
+    (remove)="removeTag($event, c)"
+  ></my-org-tag-list>
+</ng-container>
+<ng-template #spinner>
+  <mat-spinner diameter="55"></mat-spinner>
+</ng-template>
