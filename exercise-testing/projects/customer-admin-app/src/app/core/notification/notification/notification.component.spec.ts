@@ -29,6 +29,7 @@ describe('NotificationComponent', () => {
   const getNotificationByIndex = notificationIndex => null;
 
   // TODO 11: implement "getNotificationText" method by calling previously defined "getNotificationByIndex" continuing by using "query" with "By.css" for "p" tag
+  // then retrieve its "nativeElement", access the "textContent" and use "trim()" method
   const getNotificationText = notificationIndex => null;
 
   // TODO 13: implement "getNotificationButton" method by calling previously defined "getNotificationByIndex" continuing by using "query" with "By.css" for "button" tag
@@ -62,9 +63,9 @@ describe('NotificationComponent', () => {
 
   it('should render notifications', () => {
     // TODO 9: expect the number of rendered notifications (using previously defined "getNotifications()" method) to correspond to the count of mock notifications in the data created above
+    // hint: ALWAYS try to break test to see if it is really working (eg with the wrong number of notifications)
 
-    // TODO 12: expect second noticiation text to be value as in the data created above
-
+    // TODO 12: expect second notifications text to be value as in the data created above
   });
 
   it('it removes notification when button is clicked', () => {
@@ -75,5 +76,7 @@ describe('NotificationComponent', () => {
     // TODO 16: expect that the "remove" method of the "mockNotificationsService" has been called once
 
     // TODO 17: expect that the "remove" method of the "mockNotificationsService" has been called with the removed notification
+
+    // TODO 18: try to break tests to see if they are really working
   });
 });
