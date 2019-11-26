@@ -2,7 +2,7 @@
   "name": "exercise-testing",
   "version": "0.0.0",
   "scripts": {
-    "start": "npm-run-all --parallel serve serve:api",
+    "start": "npm-run-all --parallel serve",
     "serve": "ng serve -o",
     "serve:api": "json-server --watch db.json --delay 250 --port 4300 --routes db-routes.json",
     "build": "ng build --prod",
