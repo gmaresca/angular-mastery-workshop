@@ -82,7 +82,7 @@ describe('CustomerEditorComponent', () => {
 
   it('resets the form', () => {
     getNameInput().nativeElement.value = 'changed';
-    getNameInput().triggerEventHandler('input', { target: getNameInput().nativeElement });
+    getNameInput().nativeElement.dispatchEvent(new Event('input'));
     fixture.detectChanges();
 
     expect(getNameInput().nativeElement.value).toBe('changed');
@@ -95,7 +95,7 @@ describe('CustomerEditorComponent', () => {
 
   it('does NOT submit form when invalid', () => {
     getNameInput().nativeElement.value = '';
-    getNameInput().triggerEventHandler('input', { target: getNameInput().nativeElement });
+    getNameInput().nativeElement.dispatchEvent(new Event('input'));
     fixture.detectChanges();
 
     getSubmitButton().nativeElement.click();
@@ -106,7 +106,7 @@ describe('CustomerEditorComponent', () => {
 
   it('submits form when valid', () => {
     getNameInput().nativeElement.value = 'Johnny';
-    getNameInput().triggerEventHandler('input', { target: getNameInput().nativeElement });
+    getNameInput().nativeElement.dispatchEvent(new Event('input'));
     fixture.detectChanges();
 
     getSubmitButton().nativeElement.click();
@@ -121,7 +121,7 @@ describe('CustomerEditorComponent', () => {
 
   it('adds tag', () => {
     getAddTagInput().nativeElement.value = 'some-tag';
-    getAddTagInput().triggerEventHandler('keyup', { target: getAddTagInput().nativeElement });
+    getAddTagInput().nativeElement.dispatchEvent(new Event('keyup'));
     fixture.detectChanges();
 
     getAddTagButton().nativeElement.click();

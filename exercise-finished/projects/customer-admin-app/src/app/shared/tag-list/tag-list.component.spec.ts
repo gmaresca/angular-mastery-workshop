@@ -77,7 +77,7 @@ describe('TagListComponent', () => {
     expect(getTags().length).toBe(0);
 
     getAddTagInput().nativeElement.value = 'some-tag';
-    getAddTagInput().triggerEventHandler('keyup', { target: getAddTagInput().nativeElement });
+    getAddTagInput().nativeElement.dispatchEvent(new Event('keyup'));
     fixture.detectChanges();
 
     getAddTagButton().nativeElement.click();
@@ -92,7 +92,7 @@ describe('TagListComponent', () => {
     expect(getTags().length).toBe(0);
 
     getAddTagInput().nativeElement.value = 'some-tag';
-    getAddTagInput().triggerEventHandler('keyup', { target: getAddTagInput().nativeElement });
+    getAddTagInput().nativeElement.dispatchEvent(new Event('keyup'));
     fixture.detectChanges();
 
     getAddTagInput().triggerEventHandler('keydown.enter', {});

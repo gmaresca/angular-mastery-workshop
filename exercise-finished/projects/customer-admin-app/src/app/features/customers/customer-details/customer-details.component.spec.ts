@@ -103,7 +103,7 @@ describe('CustomerDetailsComponent', () => {
       fixture.detectChanges();
 
       getAddTagInput().nativeElement.value = 'some-tag';
-      getAddTagInput().triggerEventHandler('keyup', { target: getAddTagInput().nativeElement });
+      getAddTagInput().nativeElement.dispatchEvent(new Event('keyup'));
       fixture.detectChanges();
 
       getAddTagButton().nativeElement.click();
