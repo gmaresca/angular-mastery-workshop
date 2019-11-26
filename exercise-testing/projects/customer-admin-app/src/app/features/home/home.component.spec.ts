@@ -26,6 +26,6 @@ describe('HomeComponent', () => {
   });
 
   it('renders title', () => {
-    expect(getTitle()).toBe('Reference Implementation');
+    expect(getTitle()).toBe('Testing');
   });
 });
