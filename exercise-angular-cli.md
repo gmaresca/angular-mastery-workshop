@@ -22,7 +22,7 @@ In this exercise were going to explore Angular CLI
 ## TODO 1 - Learn how to use Angular CLI
 
 1. Run `ng` command to see all the available Angular CLI commands
-2. Try running `ng <some-command> --help`
+2. Try running `ng <some-command> --help` (please use `ng new --help`) as we're not in Angular workspace yet
 
 ## TODO 2 - Create new Angular workspace
 
