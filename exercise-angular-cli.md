@@ -48,7 +48,7 @@ In this exercise were going to explore Angular CLI
 1. Once we created our application we can run it in two ways, first being `ng serve` (and second being `npm start`, check that script in the `package.json` file)
 2. Open browser at `http://localhost:4200` to see the application running
 3. Adjust the `start` script in the `package.json` file by adding `--open` flag, stop running app and restart it using `npm start`
-4. Once running open your browsers DEV tools and explore the network tab about what kind of files represent the application and check their size
+4. Once running open your browsers DEV tools and explore the network tab about what kind of files represent the application and check their size (refresh application once the tab was opened)
 5. Add new `start:prod` script to your `package.json` file and add both `--open` and `--prod` flags, stop running app and restart it using `npm run start:prod`
 6. Once running open your browsers DEV tools and explore the network tab about what kind of files represent the application and check their size
 7. What other difference besides the size of the files was between the DEV and the PROD mode and what is its purpose?
