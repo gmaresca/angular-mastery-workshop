@@ -1,3 +1,4 @@
+import { Purchase } from './model/purchase';
 import { Component, OnInit } from '@angular/core';
 
 import { Customer } from './model/customers';
@@ -12,6 +13,10 @@ export class CustomersComponent implements OnInit {
 
   ngOnInit() {
     this.customers = MOCK_CUSTOMERS;
+  }
+
+  handlePurchase(purchase: Purchase){
+    this.customers.filter(c => c.id == purchase.customerId)[0].orders.push(purchase.order);
   }
 }
 

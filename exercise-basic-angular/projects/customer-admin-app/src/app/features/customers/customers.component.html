@@ -1,1 +1,3 @@
-<h1>Customers</h1>
+<div *ngFor="let c of customers">
+    <my-org-customer-item [customer]="c" (purchase)="handlePurchase($event)"></my-org-customer-item>
+</div>

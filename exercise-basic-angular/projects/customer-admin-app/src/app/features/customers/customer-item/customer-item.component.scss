@@ -1,0 +1,24 @@
+my-org-customer-item {
+    margin: 0 0 10px 0;
+}
+
+mat-card {
+    display        : flex;
+    align-items    : center;
+    justify-content: space-between;
+    vertical-align : middle;
+
+    &.vip {
+        background-color: #fff4ba;
+    }
+
+}
+
+mat-icon {
+    vertical-align: middle;
+}
+
+p {
+    margin: 0;
+    width : 400px;
+}

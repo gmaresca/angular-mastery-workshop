@@ -74,6 +74,20 @@
       "tags": [
         "queen mother"
       ]
+    },
+    {
+      "name": "Jay",
+      "surname": "Maresca",
+      "isVip": true,
+      "lifetimeOrderValue": 0,
+      "tags": [],
+      "birthday": "2001-03-16T08:00:00.000Z",
+      "address": {
+        "location": "Sherman Oaks",
+        "land": "California",
+        "continent": "America"
+      },
+      "id": 6
     }
   ]
 }

@@ -1,0 +1,9 @@
+<mat-card [ngClass]="{'vip': customer.isVip}">
+    <p>
+        <mat-icon *ngIf="!customer.isVip">person</mat-icon>
+        <mat-icon *ngIf="customer.isVip">star</mat-icon> {{customer.name}} {{customer.surname}}
+        <button mat-stroked-button (click)="sayHello()">Say Hello!</button>
+        <button mat-raised-button (click)="purchaseItem()">Purchase Item</button>
+    </p>
+    <p><i>Total order value: {{ totalOrderValue }}</i></p>
+</mat-card>
