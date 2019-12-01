@@ -3,8 +3,8 @@
   "version": "0.0.0",
   "scripts": {
     "start": "npm-run-all --parallel serve serve:api",
-    "serve": "ng serve -o",
-    "serve:api": "json-server --watch db.json --delay 250 --port 4300 --routes db-routes.json",
+    "serve": "ng serve -o --port=4302",
+    "serve:api": "json-server --watch db.json --delay 250 --port 4301 --routes db-routes.json",
     "build": "ng build --prod",
     "test": "npm run format:test && ng lint && ng test --watch false",
     "watch": "ng test --reporters spec",

@@ -1,20 +1,56 @@
 <ng-container *ngIf="customer | async as c; else spinner">
-  <h1>
-    {{ c.name }} {{ c.surname }} <mat-icon *ngIf="c.isVip">star</mat-icon>
-    <button
-      mat-icon-button
-      routerLink="../../../customers"
-      matTooltip="Close customer details"
-      matTooltipPosition="above"
-    >
-      <mat-icon (click)="navigateToCustomerOverview()">clear</mat-icon>
-    </button>
-  </h1>
+	<h1>
+		{{ c.name }} {{ c.surname }} <mat-icon *ngIf="c.isVip">star</mat-icon>
+		<button mat-icon-button routerLink="../../../customers" matTooltip="Close customer details"
+			matTooltipPosition="above">
+			<mat-icon (click)="navigateToCustomerOverview()">clear</mat-icon>
+		</button>
+	</h1>
 
-  <mat-card>
-    <!-- TODO 5: add <from> tag with "formGroup" directive which references our "customerForm" -->
+	<mat-card>
+		<!-- DONE 5: add <from> tag with "formGroup" directive which references our "customerForm" -->
+		<form [formGroup]="customerForm">
+			<mat-form-field appearance="outline" color="accent">
+				<mat-label>Name</mat-label>
+				<input matInput placeholder="Name" formControlName="name" />
+			</mat-form-field>
+			<mat-form-field appearance="outline" color="accent">
+				<mat-label>Last name</mat-label>
+				<input matInput placeholder="Last name" formControlName="surname" />
+			</mat-form-field>
+			<mat-form-field appearance="outline" color="accent">
+				<mat-label>Birthday</mat-label>
+				<input matInput [matDatepicker]="picker" placeholder="Birthday" formControlName="birthday" />
+				<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+				<mat-datepicker #picker></mat-datepicker>
+			</mat-form-field>
+			<mat-form-field appearance="outline" color="accent">
+				<mat-label>VIP</mat-label>
+				<mat-select formControlName="isVip">
+					<mat-option [value]="true">Yes</mat-option>
+					<mat-option [value]="false">No</mat-option>
+				</mat-select>
+			</mat-form-field>
+			<div formGroupName="address">
+				<mat-form-field appearance="outline" color="accent">
+					<mat-label>Location</mat-label>
+					<input matInput placeholder="Location" formControlName="location" />
+				</mat-form-field>
+				<mat-form-field appearance="outline" color="accent">
+					<mat-label>Land</mat-label>
+					<input matInput placeholder="City" formControlName="land" />
+				</mat-form-field>
+				<mat-form-field appearance="outline" color="accent">
+					<mat-label>Continent</mat-label>
+					<input matInput placeholder="Continent" formControlName="continent" />
+				</mat-form-field>
+			</div>
+			<my-org-tag-list [tags]="customerForm.get('tags').value" (add)="addTag($event)"
+				(remove)="removeTag($event)">
+			</my-org-tag-list>
+		</form>
 
-    <!-- TODO 6: inside of the form add form fields like the following
+		<!-- DONE 6: inside of the form add form fields like the following
 
        <mat-form-field appearance="outline" color="accent">
           <mat-label>Name</mat-label>
@@ -24,8 +60,8 @@
         the main reference point being "formControlName" directive which corresponds to the property in form group
      -->
 
-    <!-- TODO 7: add similar <mat-form-field> for "surname" form property -->
-    <!-- HINT: you can wrap multiple form fields using <div> tag which will make them in separate row, eg
+		<!-- DONE 7: add similar <mat-form-field> for "surname" form property -->
+		<!-- HINT: you can wrap multiple form fields using <div> tag which will make them in separate row, eg
 
      <div>
         <mat-form-field>...</<mat-form-field>
@@ -33,7 +69,7 @@
      </div>
     -->
 
-    <!-- TODO 8: add <mat-form-field> for the "isVip" boolean value, explore how we're using <mat-select> and "birthday" form property
+		<!-- DONE 8: add <mat-form-field> for the "isVip" boolean value, explore how we're using <mat-select> and "birthday" form property
         <mat-form-field appearance="outline" color="accent">
           <mat-label>VIP</mat-label>
           <mat-select formControlName="isVip">
@@ -56,10 +92,11 @@
      -->
 
 
-    <!-- TODO 9: add <div> with "formGroupName" directive for nested "address" form group -->
-    <!-- TODO 10: implement string based <mat-form-field>s for address properties -->
+		<!-- DONE 9: add <div> with "formGroupName" directive for nested "address" form group -->
 
-    <!-- TODO 11: add custom taglist component
+		<!-- DONE 10: implement string based <mat-form-field>s for address properties -->
+
+		<!-- DONE 11: add custom taglist component
 
       <my-org-tag-list
           [tags]="customerForm.get('tags').value"
@@ -71,20 +108,20 @@
 
      -->
 
-    <!-- TODO 12: run application and explore created form, next TOTOs in "customer-editor.component.ts" file -->
+		<!-- DONE 12: run application and explore created form, next TOTOs in "customer-editor.component.ts" file -->
 
-    <!-- TODO 20: add "<mat-error>Some error message</mat-error> inside of relevant <mat-form-field>s"
+		<!-- TODO 20: add "<mat-error>Some error message</mat-error> inside of relevant <mat-form-field>s"
 
       You might want to use <mat-error *ngIf="customerForm.get('name').hasError('required')">
       for every validator if you specified more than one validator for that field
     -->
 
-    <div class="actions">
-      <button mat-raised-button (click)="submit(c)" color="accent">Submit</button>
-      <button mat-flat-button (click)="reset(c)">Reset</button>
-    </div>
-  </mat-card>
+		<div class="actions">
+			<button mat-raised-button (click)="submit(c)" color="accent">Submit</button>
+			<button mat-flat-button (click)="reset(c)">Reset</button>
+		</div>
+	</mat-card>
 </ng-container>
 <ng-template #spinner>
-  <mat-spinner diameter="55"></mat-spinner>
+	<mat-spinner diameter="55"></mat-spinner>
 </ng-template>

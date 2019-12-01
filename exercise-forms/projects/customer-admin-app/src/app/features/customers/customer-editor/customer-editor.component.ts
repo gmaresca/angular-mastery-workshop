@@ -18,20 +18,32 @@ export class CustomerEditorComponent implements OnInit {
   customerForm: FormGroup;
 
   constructor(
-    // TODO 2: inject "FormBuilder"
+    private fb: FormBuilder,
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private customersBackendService: CustomersBackendService,
-  ) {}
+  ) { }
 
   ngOnInit() {
-    // TODO 3: use form builder to define reactive form using form "group"
+    // DONE 3: use form builder to define reactive form using form "group"
     // implement form for every property of "Customer" interface (besides "id")
     // property is implemented using as "<some-property: [<default-value>, [<validators>]]>", hint: most default values will be empty string or boolean value
     // the from group can have property which is also form group (for nested objects, eg "address")
-    this.customerForm = undefined;
 
-    // TODO 4: most string values should use "required" validator (from "Validators"), feel free to experiment with other built in validators
+    this.customerForm = this.fb.group({
+      name: ['', [Validators.required]],
+      surname: ['', [Validators.required]],
+      birthday: ['', [Validators.required]],
+      isVip: [false],
+      address: this.fb.group({
+        location: ['', [Validators.required]],
+        land: ['', [Validators.required]],
+        continent: ['', [Validators.required, Validators.minLength(3)]],
+      }),
+      tags: [[]],
+    });
+
+    // DONE 4: most string values should use "required" validator (from "Validators"), feel free to experiment with other built in validators
     // hint: required validator is just a property NOT a funtion (as you might get it by the IDE code completion)
 
     // next TODO items can be found in "customer-editor.component.html" file
@@ -39,7 +51,7 @@ export class CustomerEditorComponent implements OnInit {
     this.customer = this.activatedRoute.paramMap.pipe(
       map(paramMap => paramMap.get('id')),
       switchMap((id: string) => this.customersBackendService.get(parseInt(id, 10))),
-      // TODO 13: created form starts with default values but we want to edit existing customer
+      // TODO 13: create a form starts with default values but we want to edit existing customer
       // we have to use retrieved "customer" value (from backend) and feed it to the form
       // use "tap" RxJs operator (to perform side-effect) and pass customer into "customerForm" using "patchValue" method
       // check running application (form should be populated using customer data)

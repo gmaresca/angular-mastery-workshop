@@ -28,7 +28,6 @@ import { TagListComponent } from './tag-list/tag-list.component';
     // angular
     CommonModule,
     RouterModule,
-    // TODO 1: import (and export) "ReactiveFormsModule"
 
     // material
     MatToolbarModule,
@@ -43,6 +42,9 @@ import { TagListComponent } from './tag-list/tag-list.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatProgressSpinnerModule,
+
+    // Forms
+    ReactiveFormsModule
   ],
   exports: [
     // angular
@@ -66,7 +68,10 @@ import { TagListComponent } from './tag-list/tag-list.component';
     CoinFormatPipe,
     CoinDirective,
     TagListComponent,
+
+    // Forms
+    ReactiveFormsModule
   ],
   entryComponents: [ConfirmDialogComponent],
 })
-export class SharedModule {}
+export class SharedModule { }

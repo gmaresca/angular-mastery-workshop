@@ -13,6 +13,8 @@ export class HomeComponent implements OnInit {
   ngOnInit() {}
 
   info() {
+    let cazzo:number;
+    cazzo =1;
     this.notificationService.info('This is info!');
   }
 
