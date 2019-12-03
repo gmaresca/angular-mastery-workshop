@@ -16,37 +16,45 @@ export class CustomersBackendService {
   customers: Observable<Customer[]>;
 
   constructor(private httpClient: HttpClient, private notificationService: NotificationService) {
-    // TODO 2: create stream of all customers using http client get method (make request to RESOURCE_URL)
+    // DONE 2: create stream of all customers using http client get method (make request to RESOURCE_URL)
     // and use shareReplay RxJs operator with "bufferSize: 1" and "refCount: true" options, the stream should be stored in this.customers instance variable
+    this.customers = this.httpClient
+      .get<Customer[]>(RESOURCE_URL)
+      .pipe(shareReplay({ bufferSize: 1, refCount: true }));
   }
 
   findCustomers(query: string): Observable<Customer[]> {
-    // TODO 3: make and return get request using http client
+    // DONE 3: make and return get request using http client
     //  make request to RESOURCE_URL with query param "q" with the value of the "query" argument passed in the method
     // (try using Javascript template string - back ticks and ${} syntax to print value of the variable)
-    return of([]); // remove this when you provide real implementation
+    return this.httpClient.get<Customer[]>(`${RESOURCE_URL}?q=${query}`);
+    //return of([]); // remove this when you provide real implementation
   }
 
   get(id: number): Observable<Customer> {
-    // TODO 4: make and return get request using http client
+    // DONE 4: make and return get request using http client
     // make request to RESOURCE_URL followed by the "id" as path param
-    return of({} as any); // remove this when you provide real implementation
+    return this.httpClient.get<Customer>(`${RESOURCE_URL}?id=${id}`);
   }
 
   update(customer: Customer): Observable<Customer> {
-    // TODO 5: make and return put request using http client
+    // DONE 5: make and return put request using http client
     // make request to RESOURCE_URL followed by the "id" as path param ( get ID from the customer object ) and pass
     // in customer object as data payload to be sent to the backend
     // use .pipe(tap()) to perform side-effect which will create info notification that customer was updated in case of successful request
     // (hint: use this.notificationService)
-    return of({} as any); // remove this when you provide real implementation
+    return this.httpClient.put<Customer>(`${RESOURCE_URL}?id=${customer.id}`, customer)
+      .pipe(tap(() => this.notificationService.info(`User: ${customer.name} ${customer.surname} has been updated`, 2000)));
+    //return of({} as any); // remove this when you provide real implementation
   }
 
   remove(id: number): Observable<void> {
-    // TODO 6: make and return delete request using http client
+    // DONE 6: make and return delete request using http client
     // make request to RESOURCE_URL followed by the "id" as path param
     // use .pipe(tap()) to perform side-effect which will create info notification that customer was removed in case of successful request
     // (hint: use this.notificationService)
-    return of({} as any); // remove this when you provide real implementation
+    return this.httpClient.delete<void>(`${RESOURCE_URL}?id=${id}`)
+    .pipe(tap(() => this.notificationService.info(`Cusotmer ${id} deleted`, 2000)));
+      
   }
 }

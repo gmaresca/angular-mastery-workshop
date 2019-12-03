@@ -15,7 +15,8 @@ import { AppComponent } from './app.component';
     // vendor
     BrowserModule,
     BrowserAnimationsModule,
-    // TODO 1: add "HttpClientModule" to imports
+    HttpClientModule,
+    // DONE 1: add "HttpClientModule" to imports
 
     // local
     CoreModule,

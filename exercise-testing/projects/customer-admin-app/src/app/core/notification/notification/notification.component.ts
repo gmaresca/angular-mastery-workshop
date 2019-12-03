@@ -12,9 +12,9 @@ import { ReactiveNotificationService } from '../reactive-notification.service';
 export class NotificationComponent implements OnInit {
   notifications: Observable<Notification[]>;
 
-  // TODO 0: run application and test notification feature to get better idea what are we going to test
+  // DONE 0: run application and test notification feature to get better idea what are we going to test
 
-  // TODO 1: notice we're injecting a service which means we want to mock it in the test
+  // DONE 1: notice we're injecting a service which means we want to mock it in the test
   // (we want to test component in isolation, service implementation does not matter)
   constructor(private notificationService: ReactiveNotificationService) {}
 

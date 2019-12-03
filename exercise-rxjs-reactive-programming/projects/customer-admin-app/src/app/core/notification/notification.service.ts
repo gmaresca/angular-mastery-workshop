@@ -5,7 +5,7 @@ import { UuidService } from '../uuid/uuid.service';
 
 import { Notification, NotificationType } from './notification';
 
-// TODO 1: explore imperative notification service implementation
+// DONE 1: explore imperative notification service implementation
 // (also run application and trigger notifications using provided buttons)
 @Injectable()
 export class NotificationService {
@@ -36,7 +36,7 @@ export class NotificationService {
     const notification = { id: this.uuidService.generate(), type, message };
     this.notificationsSync.push(notification);
 
-    // TODO 2: notice it uses "setTimeout" to implement hiding of a notification after some time (eg 2s for info and 5s for warning)
+    // DONE 2: notice it uses "setTimeout" to implement hiding of a notification after some time (eg 2s for info and 5s for warning)
     if (timeout) {
       setTimeout(() => {
         this.remove(notification);
